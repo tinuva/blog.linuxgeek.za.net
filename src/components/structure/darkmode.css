@@ -1,0 +1,261 @@
+/* Dark Mode */
+:root {
+  --dark-mode-bg-color: #282c34;
+  --dark-mode-bg-color-lighter: #3b414c;
+  --dark-mode-bg-color-secondary: #7f848e;
+  --dark-mode-bg-color-tertiary: #656060;
+  --dark-mode-color: #bbbbbb;
+  --dark-mode-link-color: #d19a66;
+  --dark-mode-link-color-hover: #b18c47;
+  --dark-mode-white: #fff;
+  --dark-mode-green: #98c379;
+  --dark-mode-red: #e06c75;
+  --dark-mode-orange: #e85b46;
+  --dark-mode-blue: #61afef;
+  --dark-mode-blue-hover: #67b4f4;
+  --dark-mode-blue-hover-2: #3c9dec;
+  --dark-mode-black: #212121;
+  --dark-mode-blue-2: #56b6c2;
+  --dark-mode-blue-2-hover: #50adb9;
+}
+
+.dark-mode header,
+.dark-mode .main-wrapper,
+.dark-mode .sidebar-wrapper {
+  transition: all 175ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.dark-mode .main {
+  transition: all 275ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.dark-mode header {
+  background-color: var(--dark-mode-bg-color) !important;
+  color: var(--dark-mode-color) !important;
+}
+
+.dark-mode .main-wrapper {
+  background-color: var(--dark-mode-bg-color);
+  color: var(--dark-mode-color);
+}
+
+.dark-mode .sidenav a {
+  color: var(--dark-mode-link-color);
+}
+
+.dark-mode .sidenav a:hover {
+  color: var(--dark-mode-link-color-hover);
+}
+
+.dark-mode .sidenav-category {
+  color: var(--dark-mode-color) !important;
+}
+
+.dark-mode .sidebar-wrapper {
+  background-color: var(--dark-mode-bg-color);
+  color: var(--dark-mode-color);
+}
+
+.dark-mode .sidebar-wrapper em {
+  border-color: var(--dark-mode-color);
+}
+
+.dark-mode .sidebar-wrapper .sidenav-info {
+  color: var(--dark-mode-color);
+}
+
+.dark-mode .sidebar-wrapper a::after {
+  background: var(--dark-mode-link-color-hover);
+}
+
+.dark-mode .sidebar-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--dark-mode-link-color);
+}
+
+.dark-mode header .nav a[aria-current],
+.dark-mode .sidebar-wrapper a[aria-current] {
+  color: var(--dark-mode-link-color-hover) !important;
+}
+
+.dark-mode .main {
+  background-color: var(--dark-mode-bg-color);
+  color: var(--dark-mode-color);
+}
+
+.dark-mode a {
+  color: var(--dark-mode-link-color);
+}
+
+.dark-mode a:hover {
+  color: var(--dark-mode-link-color-hover);
+}
+
+.dark-mode .main a,
+.dark-mode .main a:visited,
+.dark-mode .main a:link {
+  color: var(--dark-mode-link-color);
+  box-shadow: inset 0 -2px 0px 0px var(--dark-mode-link-color-hover);
+}
+
+.dark-mode .main a:active,
+.dark-mode .main a:hover,
+.dark-mode .main a:focus {
+  color: var(--dark-mode-white);
+  box-shadow: inset 0 -32px 0px 0px var(--dark-mode-link-color-hover);
+}
+
+.dark-mode .article-update-notification {
+  background-color: var(--dark-mode-bg-color-secondary);
+  color: #0e0e0e;
+}
+
+.dark-mode .feedback [data-feedback='good'] {
+  color: var(--dark-mode-green);
+  border: 2px solid var(--dark-mode-green);
+}
+
+.dark-mode .feedback [data-feedback='good']:hover {
+  color: var(--dark-mode-bg-color);
+  background-color: var(--dark-mode-green);
+}
+
+.dark-mode .feedback [data-feedback='bad'] {
+  color: var(--dark-mode-red);
+  border: 2px solid var(--dark-mode-red);
+}
+
+.dark-mode .feedback [data-feedback='bad']:hover {
+  color: var(--dark-mode-bg-color);
+  background-color: var(--dark-mode-red);
+}
+
+.dark-mode .support-section a.amazon {
+  border: 2px solid var(--dark-mode-bg-color-secondary);
+  color: var(--dark-mode-bg-color);
+  background-color: var(--dark-mode-bg-color-secondary);
+}
+
+.dark-mode .support-section a.banggood {
+  border: 2px solid var(--dark-mode-red);
+  color: var(--dark-mode-bg-color);
+  background-color: var(--dark-mode-red);
+}
+
+.dark-mode .support-section a.paypal {
+  border: 2px solid var(--dark-mode-blue);
+  color: var(--dark-mode-bg-color);
+  background-color: var(--dark-mode-blue);
+}
+
+.dark-mode .support-section a.patreon {
+  border: 2px solid var(--dark-mode-orange);
+  color: var(--dark-mode-bg-color);
+  background-color: var(--dark-mode-orange);
+}
+
+.dark-mode [class|='TinyLetterSignUp__TinyLetter'] {
+  color: var(--dark-mode-black);
+  background-color: var(--dark-mode-bg-color-secondary);
+}
+
+.dark-mode [class|='TinyLetterSignUp__TinyLetter'] input[type='submit'] {
+  background-color: var(--dark-mode-blue);
+  border-color: var(--dark-mode-blue);
+}
+
+.dark-mode [class|='TinyLetterSignUp__TinyLetter'] input[type='submit']:hover {
+  background-color: var(--dark-mode-blue-hover);
+  border-color: var(--dark-mode-blue-hover);
+}
+
+.dark-mode .tinyletter-link {
+  color: var(--dark-mode-black) !important;
+}
+
+.dark-mode .tinyletter-link:hover {
+  border-bottom: none;
+}
+
+.dark-mode .social-icon {
+  color: var(--dark-mode-black) !important;
+  filter: invert(85%);
+}
+
+.dark-mode .bm-burger-bars {
+  background-color: var(--dark-mode-color);
+}
+
+.dark-mode .bm-menu {
+  background-color: var(--dark-mode-bg-color-secondary);
+}
+
+.dark-mode .menu-sidebar {
+  background-color: var(--dark-mode-bg-color);
+}
+
+.dark-mode .menu-sidebar .post-preview,
+.dark-mode .main .post-preview {
+  color: var(--dark-mode-black);
+  background-color: var(--dark-mode-bg-color-secondary);
+}
+
+.dark-mode .main .post-preview-tag {
+  background-color: var(--dark-mode-bg-color-tertiary);
+}
+
+.dark-mode .sidebar img {
+  filter: invert(85%);
+}
+
+.dark-mode .progress-bar {
+  background-color: var(--dark-mode-link-color);
+}
+
+.dark-mode .blog-post .gatsby-resp-image-wrapper {
+  box-shadow: 2px 2px 6px 0px #444;
+}
+
+.dark-mode .blog-post .gatsby-resp-image-wrapper:hover {
+  box-shadow: 3px 3px 8px 0px #444;
+  transition: all 275ms ease-out;
+}
+
+.dark-mode :not(pre) > code[class*='language-'],
+.dark-mode pre[class*='language-'] {
+  background: var(--dark-mode-bg-color-secondary);
+}
+
+.dark-mode button.ask-a-question {
+  color: var(--dark-mode-blue);
+  border: 2px solid var(--dark-mode-blue);
+}
+
+.dark-mode button.ask-a-question:hover {
+  color: var(--dark-mode-bg-color);
+  background-color: var(--dark-mode-blue);
+}
+
+.dark-mode header nav ul.nav li ul {
+  background-color: var(--dark-mode-bg-color-lighter);
+}
+
+.dark-mode header nav ul.nav li ul li a:hover {
+  background-color: var(--dark-mode-bg-color);
+}
+
+.dark-mode header nav ul.nav li ul li.tags {
+  color: var(--dark-mode-color);
+}
+
+.dark-mode header nav ul.nav li ul li.tags .tag-pool .tag-pool__tag {
+  color: var(--dark-mode-bg-color);
+  background: var(--dark-mode-blue);
+}
+
+.dark-mode header nav ul.nav li ul li.tags .tag-pool .tag-pool__tag:hover {
+  background: var(--dark-mode-blue-hover-2);
+}
+
+.dark-mode header nav ul.nav li ul li hr {
+  border-color: var(--dark-mode-color);
+}
