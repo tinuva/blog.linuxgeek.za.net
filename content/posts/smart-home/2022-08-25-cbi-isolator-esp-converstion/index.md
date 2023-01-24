@@ -1,6 +1,6 @@
 ---
 path: '/smart-home/cbi-isolator-esp-conversion'
-date: '2019-07-22'
+date: '2022-08-25'
 title: 'Convert a CBI Astute Isolator with an ESP-12S'
 author: 'David Bezuidenhout'
 draft: false
