@@ -6,7 +6,6 @@ author: 'David Bezuidenhout'
 draft: false
 category: 'stories'
 tags:
-  - 'lifestory'
   - 'learning'
 affiliate: ''
 ogKeywords: 'writing, real story, life stories, journal, story telling, storytelling, learning story, bulgaria, university students, traveling experience, customer service, waiter, restaurant, a decade, 2010, 2020, life experience, life story, software development, becoming a parent, moving to another country, USA, Finland, Cyprus, expat, living abroad'
