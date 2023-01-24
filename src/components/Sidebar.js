@@ -35,7 +35,7 @@ const SideBar = () => {
     <StyledSidebar className="sidebar-wrapper">
       <div className="sidebar">
         <ul className="sidenav">
-          {/* <li>
+          <li>
             <Link to="/posts/?category=smarthome" className="sidenav-category">
               <span role="img" aria-label="house">
                 🏠
@@ -49,22 +49,7 @@ const SideBar = () => {
                 {page.node.frontmatter.title}
               </Link>
             </li>
-          ))} */}
-          {/* <li>
-            <Link to="/posts/?category=fpv" className="sidenav-category">
-              <span role="img" aria-label="helicopter">
-                🚁
-              </span>{' '}
-              <em>FPV drones</em>
-            </Link>
-          </li>
-          {sortedByCategory['fpv'].map((page) => (
-            <li key={page.node.id}>
-              <Link to={page.node.frontmatter.path} activeStyle={activeStyle}>
-                {page.node.frontmatter.title}
-              </Link>
-            </li>
-          ))} */}
+          ))}
           <li>
             <Link to="/posts/?category=projects" className="sidenav-category">
               <span role="img" aria-label="project">
@@ -112,7 +97,7 @@ const SideBar = () => {
           ))}
         </ul>
         <hr />
-        <EternalArchives />
+        {/* <EternalArchives /> */}
       </div>
     </StyledSidebar>
   )

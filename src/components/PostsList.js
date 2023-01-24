@@ -3,7 +3,7 @@ import { Link, navigate } from 'gatsby'
 import Img from 'gatsby-image'
 import svgRightArrow from '../images/right-arrow.svg'
 
-const ALL_CATEGORIES = ['fpv', 'projects', 'learning', 'stories', 'smarthome']
+const ALL_CATEGORIES = ['projects', 'learning', 'stories', 'smarthome']
 
 const ALL_DESCRIPTION = {
   all: 'All the things...',

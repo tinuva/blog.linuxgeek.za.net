@@ -27,8 +27,8 @@ class BlogPostTemplate extends React.Component {
     // If post doesn't have a defined og image, fall back to default defined here
     const ogImage =
       post.frontmatter.ogImage !== null
-        ? `https://blog.georgi-yanev.com${post.frontmatter.ogImage.publicURL}`
-        : `https://blog.georgi-yanev.com/default-ogimage.png`
+        ? `https://blog.linuxgeek.za.net${post.frontmatter.ogImage.publicURL}`
+        : `https://blog.linuxgeek.za.net/default-ogimage.png`
 
     const timeToReadEmoji = '⌛'.repeat(Math.ceil(post.timeToRead / 5))
 
@@ -110,7 +110,7 @@ class BlogPostTemplate extends React.Component {
             "@type": "NewsArticle",
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": "https://blog.georgi-yanev.com${post.frontmatter.path}"
+              "@id": "https://blog.linuxgeek.za.net${post.frontmatter.path}"
             },
             "headline": "${post.frontmatter.title}",
             "name": "${post.frontmatter.title}",
@@ -127,15 +127,15 @@ class BlogPostTemplate extends React.Component {
             ],
             "publisher": {
               "@type": "Organization",
-              "name": "Georgi's Blog",
+              "name": "David's Blog",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://blog.georgi-yanev.com/default-ogimage.png"
+                "url": "https://blog.linuxgeek.za.net/default-ogimage.png"
               }
             },
             "description": "${post.excerpt}",
             "articleSection": "${post.excerpt}",
-            "url": "https://blog.georgi-yanev.com${post.frontmatter.path}"
+            "url": "https://blog.linuxgeek.za.net${post.frontmatter.path}"
           }
         `}</script>
         </Helmet>
@@ -203,9 +203,9 @@ class BlogPostTemplate extends React.Component {
               config={disqusConfig}
             />
             {/* <Giveaway /> */}
-            <YouTubeChannelsPromo text="Need even more FPV in your life? Check out my YouTube channels:" />
+            {/* <YouTubeChannelsPromo text="Need even more FPV in your life? Check out my YouTube channels:" />
             <TinyLetterSignup />
-            <PromoBanner linkTo={bannerLinkBottom} imageName="bigStripe3" />
+            <PromoBanner linkTo={bannerLinkBottom} imageName="bigStripe3" /> */}
           </div>
         </div>
       </Layout>

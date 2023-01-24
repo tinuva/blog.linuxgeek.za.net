@@ -1,8 +1,8 @@
 {
-  "name": "blog-georgi-yanev",
-  "description": "Georgi Yanev's Blog",
+  "name": "blog-david-bezuidenhout",
+  "description": "David Bezuidenhout's Blog",
   "version": "3.0.0",
-  "author": "Georgi Yanev <georgiyanev.gy@gmail.com>",
+  "author": "David Bezuidenhout <tinuva@gmail.com>",
   "dependencies": {
     "@weknow/gatsby-remark-twitter": "^0.2.3",
     "babel-plugin-styled-components": "^2.0.2",
@@ -49,18 +49,18 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "prettier": "^2.5.1"
   },
-  "homepage": "https://github.com/jumpalottahigh/blog.georgi-yanev.com#readme",
+  "homepage": "https://github.com/tinuva/blog.linuxgeek.za.net#readme",
   "keywords": [
-    "Georgi Yanev Blog"
+    "David Bezuidenhout Blog"
   ],
   "license": "MIT",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jumpalottahigh/blog.georgi-yanev.com.git"
+    "url": "git+https://github.com/tinuva/blog.inuxgeek.za.net.git"
   },
   "scripts": {
-    "clean": "rm -rf .cache && rm -rf public/",
+    "clean": "rm -rf .cache && rm -rf public/ && gatsby clean",
     "dev": "gatsby develop",
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
     "test": "echo \"Error: no test specified\" && exit 1",

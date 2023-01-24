@@ -72,12 +72,24 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 920,
+              maxWidth: 1000,
+              backgroundColor: 'transparent',
               withWebp: true,
               quality: 75,
               // Remove the default behavior of adding a link to each
               // image.
               linkImagesToOriginal: true,
+              wrapperStyle(image) {
+                let maxImageWidth;
+                if (image.aspectRatio < 1) maxImageWidth = image.aspectRatio * 1000;
+                else maxImageWidth = 1000;
+          
+                return `max-width: clamp(200px, calc(${
+                    image.aspectRatio
+                  }* 80vh), ${
+                    Math.round(maxImageWidth * 10) / 10
+                  }px); max-height: 1000px;`;
+                },
             },
           },
           {
