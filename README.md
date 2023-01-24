@@ -2,7 +2,6 @@
 
 ![Project Maintenance][maintenance-shield]
 [![GitHub Actions Status][actions-shield]][actions]
-[![Lighthouse score: 98/100](https://lighthouse-badge.appspot.com/?score=98)](https://github.com/ebidel/lighthouse-badge)
 
 ### 📘 Blog built with Gatsby and hosted on Github Pages.
 
@@ -30,6 +29,6 @@ To run locally in dev mode:
 - [LinkedIn](https://www.linkedin.com/in/davidbez/)
 
 
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2022.svg
-[actions-shield]: https://github.com/tinuva/blog.linuxgeek.za.net/workflows/Home%20Assistant%20CI/badge.svg
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2023.svg
+[actions-shield]: https://github.com/tinuva/blog.linuxgeek.za.net/workflows/Gatsby%20Publish/badge.svg
 [actions]: https://github.com/tinuva/blog.linuxgeek.za.net/actions
