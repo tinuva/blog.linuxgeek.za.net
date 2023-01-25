@@ -25,7 +25,7 @@ const Edit = ({ path, date }) => {
     let category = path.split('/')[1]
     let slug = path.split('/')[2]
 
-    url = `https://github.com/tinuva/blog.linuxgeek.za.net/edit/master/content/posts/${category}/${date}-${slug}/index.md`
+    url = `https://github.com/tinuva/blog.linuxgeek.za.net/edit/main/content/posts/${category}/${date}-${slug}/index.md`
   }
 
   return (
