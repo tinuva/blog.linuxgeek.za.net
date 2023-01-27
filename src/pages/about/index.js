@@ -37,14 +37,14 @@ const AboutPage = () => (
         In this blog you will find posts about {' '}
         <strong>
           <span role="img" aria-label="os">
-            💻
+            🐧
           </span>{' '}
           Linux sysadmin
         </strong>
         ,{' '}
         <strong>
           <span role="img" aria-label="network">
-            💻
+            🔀
           </span>{' '}
           networking
         </strong>
