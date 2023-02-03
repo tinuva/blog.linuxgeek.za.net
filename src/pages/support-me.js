@@ -31,7 +31,7 @@ const Task = styled.div`
 const SupportMePage = () => {
   const image = useStaticQuery(graphql`
     {
-      georgi: file(relativePath: { regex: "/^home/davidb-profile.png/" }) {
+      david: file(relativePath: { regex: "/^home/davidb-profile.png/" }) {
         name
         childImageSharp {
           fixed(width: 110, quality: 80) {
@@ -180,8 +180,8 @@ const SupportMePage = () => {
       <h2 style={{ textAlign: 'center', marginTop: '2rem' }}>Thank you!</h2>
       <div style={{ display: 'flex' }}>
         <Img
-          fixed={image.georgi.childImageSharp.fixed}
-          alt="Georgi Yanev"
+          fixed={image.david.childImageSharp.fixed}
+          alt="David Bezuidenhout"
           style={{ borderRadius: '50%', margin: '0 auto 3rem auto' }}
         />
       </div>

@@ -53,7 +53,7 @@ class BlogPostTemplate extends React.Component {
     return (
       <Layout location={this.props.location}>
         <Helmet
-          title={`${post.frontmatter.title} - Georgi Yanev`}
+          title={`${post.frontmatter.title} - David Bezuidenhout`}
           meta={[
             {
               name: 'description',
