@@ -1,0 +1,4 @@
+This is a Brave Payments publisher verification file.
+
+Domain: linuxgeek.za.net
+Token: xxxx
