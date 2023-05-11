@@ -91,8 +91,14 @@ Aaand time to put everything back together.
 
 ### Configuration
 
-I used the following template to configure the device for Tasmota:
+I used the following template to configure the device for Tasmota.
 
+Smart Isolator:
+```
+{"NAME":"CBI Astute","GPIO":[2624,320,0,0,0,224,0,0,2720,32,2656,0,0,0],"FLAG":0,"BASE":6}
+````
+
+Smart Switch:
 ```
 {"NAME":"CBI Astute","GPIO":[131,56,0,0,0,21,0,0,134,17,132,0,0],"FLAG":0,"BASE":6}
 ```
