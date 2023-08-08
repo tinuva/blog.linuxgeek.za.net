@@ -1,0 +1,1467 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[David's Blog]]></title><description><![CDATA[David Bezuidenhout's Blog]]></description><link>https://blog.linuxgeek.za.net</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 08 Aug 2023 10:17:22 GMT</lastBuildDate><item><title><![CDATA[Convert a Bneta/Qualitel Smart plug with an ESP-02S]]></title><description><![CDATA[Let’s start. 🔩 Components You will need the following components: ESP-02S module from [ [ESP8266 development board][5] or any usb to serial…]]></description><link>https://blog.linuxgeek.za.net/smart-home/bneta-qualitel-plug-esp-conversion/</link><guid isPermaLink="false">https://blog.linuxgeek.za.net/smart-home/bneta-qualitel-plug-esp-conversion/</guid><pubDate>Mon, 03 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Let’s start.&lt;/p&gt;
+&lt;h3&gt;🔩 Components&lt;/h3&gt;
+&lt;p&gt;You will need the following components:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;ESP-02S module from [&lt;/li&gt;
+&lt;li&gt;[ESP8266 development board][5] or any usb to serial adapter, such as the popular [CH340G USB-Serial Converter][6]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;This is the plug&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 750px; max-width: clamp(200px, calc(0.7507507507507507* 80vh), 750.8px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a123025abdba863e77525356885fd93b/10729/plug-front.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 133.20000000000002%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMEBQL/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/2gAMAwEAAhADEAAAAenIpLPJx3c3OaZQMJ//xAAdEAACAgIDAQAAAAAAAAAAAAABAgMRABIEECEx/9oACAEBAAEFAoVSQNCmm1ZxvFu4y+KQmFqF6n6VNdf/xAAZEQACAwEAAAAAAAAAAAAAAAAAEgECEFH/2gAIAQMBAT8BFr3Gk//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABsQAAIDAQEBAAAAAAAAAAAAAAABAhARMSFx/9oACAEBAAY/Am/RuLe/TrJEqze00O//xAAcEAEAAgIDAQAAAAAAAAAAAAABABEhMUFRYfD/2gAIAQEAAT8hdPje4QMEUwSTyb7shUUmHcodLFlke0BKTOJxDDHb+zEFHcQVUJ//2gAMAwEAAgADAAAAEKfTDP/EABgRAQADAQAAAAAAAAAAAAAAAAEAECER/9oACAEDAQE/EOQY2gGDP//EABcRAAMBAAAAAAAAAAAAAAAAAAABERD/2gAIAQIBAT8QLkR//8QAHRABAAICAgMAAAAAAAAAAAAAAQARITFBUXGRof/aAAgBAQABPxAPRTZwU7WCEW7yE5GPEgOaPioENC0fUSy6dHODfyDSdxIy8BHSyXgkoB2sauO0tZks01cYABwojMCvU//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/a123025abdba863e77525356885fd93b/70216/plug-front.webp 250w,
+/static/a123025abdba863e77525356885fd93b/61bdd/plug-front.webp 500w,
+/static/a123025abdba863e77525356885fd93b/e28c4/plug-front.webp 750w&quot;
+              sizes=&quot;(max-width: 750px) 100vw, 750px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/a123025abdba863e77525356885fd93b/b6501/plug-front.jpg 250w,
+/static/a123025abdba863e77525356885fd93b/bb312/plug-front.jpg 500w,
+/static/a123025abdba863e77525356885fd93b/10729/plug-front.jpg 750w&quot;
+            sizes=&quot;(max-width: 750px) 100vw, 750px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/a123025abdba863e77525356885fd93b/10729/plug-front.jpg&quot;
+            alt=&quot;plug front&quot;
+            title=&quot;plug front&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; max-width: clamp(200px, calc(0.7507507507507507* 80vh), 750.8px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a75e75cff9bee60dba10d69ba480dda5/e35d9/plug-rear.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 133.20000000000002%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAIEA//EABYBAQEBAAAAAAAAAAAAAAAAAAABA//aAAwDAQACEAMQAAABjpNIgMy7WvC0yQ3D/8QAHBAAAgMAAwEAAAAAAAAAAAAAAQIAAxESIjEy/9oACAEBAAEFAkVnJVlUgGUeudr3JzCMziWDs0X5M//EABgRAAIDAAAAAAAAAAAAAAAAAAABAhAR/9oACAEDAQE/AROOX//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABsQAAIDAAMAAAAAAAAAAAAAAAERABAhAiCB/9oACAEBAAY/AsXsZRrlCqIETGzOn//EABsQAQADAQADAAAAAAAAAAAAAAEAESExUXGh/9oACAEBAAE/IapyNYY+Gx5EbSfMSp2jdUK9adiu4EQeqnTCX9wbP//aAAwDAQACAAMAAAAQXME8/8QAGBEBAQADAAAAAAAAAAAAAAAAAQAQESH/2gAIAQMBAT8Q1GAmO3//xAAWEQEBAQAAAAAAAAAAAAAAAAAAERD/2gAIAQIBAT8QyK//xAAeEAEAAwEAAQUAAAAAAAAAAAABABEhMWFBgZGhsf/aAAgBAQABPxBCRbhVR7ypJAS/0i3e+ZoExJ8bHGUEOVSMegXCgFBfg36wpWgI8lNktMgJXutz+Qr9+Z//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/a75e75cff9bee60dba10d69ba480dda5/70216/plug-rear.webp 250w,
+/static/a75e75cff9bee60dba10d69ba480dda5/61bdd/plug-rear.webp 500w,
+/static/a75e75cff9bee60dba10d69ba480dda5/d0dac/plug-rear.webp 1000w,
+/static/a75e75cff9bee60dba10d69ba480dda5/21231/plug-rear.webp 1500w,
+/static/a75e75cff9bee60dba10d69ba480dda5/521a5/plug-rear.webp 2000w,
+/static/a75e75cff9bee60dba10d69ba480dda5/84cd4/plug-rear.webp 3000w&quot;
+              sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/a75e75cff9bee60dba10d69ba480dda5/b6501/plug-rear.jpg 250w,
+/static/a75e75cff9bee60dba10d69ba480dda5/bb312/plug-rear.jpg 500w,
+/static/a75e75cff9bee60dba10d69ba480dda5/4edc6/plug-rear.jpg 1000w,
+/static/a75e75cff9bee60dba10d69ba480dda5/92dea/plug-rear.jpg 1500w,
+/static/a75e75cff9bee60dba10d69ba480dda5/cbe2c/plug-rear.jpg 2000w,
+/static/a75e75cff9bee60dba10d69ba480dda5/e35d9/plug-rear.jpg 3000w&quot;
+            sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/a75e75cff9bee60dba10d69ba480dda5/4edc6/plug-rear.jpg&quot;
+            alt=&quot;plug rear&quot;
+            title=&quot;plug rear&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; max-width: clamp(200px, calc(1.3297872340425532* 80vh), 1000px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/dfec8b76164ab23b22ff265f0c502753/b28f0/inside-micro-controller.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.2%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEAv/EABQBAQAAAAAAAAAAAAAAAAAAAAL/2gAMAwEAAhADEAAAAWOiCpjYj//EABsQAAMAAgMAAAAAAAAAAAAAAAECAwAREiEi/9oACAEBAAEFAvQZHQm55V2as3WGY3//xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAwEBPwFJ/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAHBAAAgICAwAAAAAAAAAAAAAAAAECESFBEBIx/9oACAEBAAY/Auz8rJSZLJWiK0uP/8QAGhAAAgMBAQAAAAAAAAAAAAAAAREAITFBUf/aAAgBAQABPyFsosBzSw5WwZwIAUFCx40RmfRDijTk/9oADAMBAAIAAwAAABBLz//EABcRAAMBAAAAAAAAAAAAAAAAAAEQESH/2gAIAQMBAT8Q0gX/xAAXEQADAQAAAAAAAAAAAAAAAAAAARFR/9oACAECAQE/EE9Kf//EABoQAQACAwEAAAAAAAAAAAAAAAEAESFRYUH/2gAIAQEAAT8QRSbyMid0w+RL0roapit61GsRaYFxvyC9KocGgI1LbN0T/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/dfec8b76164ab23b22ff265f0c502753/70216/inside-micro-controller.webp 250w,
+/static/dfec8b76164ab23b22ff265f0c502753/61bdd/inside-micro-controller.webp 500w,
+/static/dfec8b76164ab23b22ff265f0c502753/d0dac/inside-micro-controller.webp 1000w,
+/static/dfec8b76164ab23b22ff265f0c502753/21231/inside-micro-controller.webp 1500w,
+/static/dfec8b76164ab23b22ff265f0c502753/521a5/inside-micro-controller.webp 2000w,
+/static/dfec8b76164ab23b22ff265f0c502753/b7fd3/inside-micro-controller.webp 4000w&quot;
+              sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/dfec8b76164ab23b22ff265f0c502753/b6501/inside-micro-controller.jpg 250w,
+/static/dfec8b76164ab23b22ff265f0c502753/bb312/inside-micro-controller.jpg 500w,
+/static/dfec8b76164ab23b22ff265f0c502753/4edc6/inside-micro-controller.jpg 1000w,
+/static/dfec8b76164ab23b22ff265f0c502753/92dea/inside-micro-controller.jpg 1500w,
+/static/dfec8b76164ab23b22ff265f0c502753/cbe2c/inside-micro-controller.jpg 2000w,
+/static/dfec8b76164ab23b22ff265f0c502753/b28f0/inside-micro-controller.jpg 4000w&quot;
+            sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/dfec8b76164ab23b22ff265f0c502753/4edc6/inside-micro-controller.jpg&quot;
+            alt=&quot;inside micro controller&quot;
+            title=&quot;inside micro controller&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; max-width: clamp(200px, calc(1.3297872340425532* 80vh), 1000px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/72158a6c07f0150f87ad0a906d75ea3f/b28f0/inside-pcb-bottom.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.2%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAAD/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQID/9oADAMBAAIQAxAAAAHcahEJto0//8QAGhAAAQUBAAAAAAAAAAAAAAAAEQABAgMiIf/aAAgBAQABBQJ55JTFT7UwFccf/8QAGBEAAgMAAAAAAAAAAAAAAAAAABEBAjL/2gAIAQMBAT8BvohI/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFxAAAwEAAAAAAAAAAAAAAAAAABARgf/aAAgBAQAGPwKvCL//xAAbEAACAwADAAAAAAAAAAAAAAABIQARMUFRgf/aAAgBAQABPyF0BV9x1kvhQqInyBnBMDNlwKf/2gAMAwEAAgADAAAAEP8A/wD/xAAWEQEBAQAAAAAAAAAAAAAAAAAAESH/2gAIAQMBAT8QGSv/xAAXEQEBAQEAAAAAAAAAAAAAAAABABEx/9oACAECAQE/EDkjt//EAB4QAQACAgIDAQAAAAAAAAAAAAERIQAxQWFRcaHB/9oACAEBAAE/EJnISCojv7gYFB9nZiCsHmk5RuIUz03jpCi23VRXGeNjV8b/AHP/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/72158a6c07f0150f87ad0a906d75ea3f/70216/inside-pcb-bottom.webp 250w,
+/static/72158a6c07f0150f87ad0a906d75ea3f/61bdd/inside-pcb-bottom.webp 500w,
+/static/72158a6c07f0150f87ad0a906d75ea3f/d0dac/inside-pcb-bottom.webp 1000w,
+/static/72158a6c07f0150f87ad0a906d75ea3f/21231/inside-pcb-bottom.webp 1500w,
+/static/72158a6c07f0150f87ad0a906d75ea3f/521a5/inside-pcb-bottom.webp 2000w,
+/static/72158a6c07f0150f87ad0a906d75ea3f/b7fd3/inside-pcb-bottom.webp 4000w&quot;
+              sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/72158a6c07f0150f87ad0a906d75ea3f/b6501/inside-pcb-bottom.jpg 250w,
+/static/72158a6c07f0150f87ad0a906d75ea3f/bb312/inside-pcb-bottom.jpg 500w,
+/static/72158a6c07f0150f87ad0a906d75ea3f/4edc6/inside-pcb-bottom.jpg 1000w,
+/static/72158a6c07f0150f87ad0a906d75ea3f/92dea/inside-pcb-bottom.jpg 1500w,
+/static/72158a6c07f0150f87ad0a906d75ea3f/cbe2c/inside-pcb-bottom.jpg 2000w,
+/static/72158a6c07f0150f87ad0a906d75ea3f/b28f0/inside-pcb-bottom.jpg 4000w&quot;
+            sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/72158a6c07f0150f87ad0a906d75ea3f/4edc6/inside-pcb-bottom.jpg&quot;
+            alt=&quot;inside pcb bottom&quot;
+            title=&quot;inside pcb bottom&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;🔩 Flashing Tasmota to the ESP-2&lt;/h3&gt;
+&lt;p&gt;First up, let’s program our new controller. I am using my [ESP8266 development board][5] here because it works, however I am using the pins as you can do with any other usb ttl device.&lt;/p&gt;
+&lt;p&gt;Soldering before we can program:
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; max-width: clamp(200px, calc(1.3297872340425532* 80vh), 1000px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/218f11a47ce0dcc8ee2cc71fe9fe8b84/b28f0/pre-programming-soldering.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.2%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAQBA//EABYBAQEBAAAAAAAAAAAAAAAAAAIAAf/aAAwDAQACEAMQAAAB5J9O3BX/xAAYEAADAQEAAAAAAAAAAAAAAAABAgMSAP/aAAgBAQABBQIVO2rTpu2djVK7aQcr/8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQMBAT8Bp//EABYRAQEBAAAAAAAAAAAAAAAAAAEAEf/aAAgBAgEBPwHMZb//xAAcEAACAgIDAAAAAAAAAAAAAAAAEQEhAhIiYaH/2gAIAQEABj8C1VCSiSo9Iz6HGKpHGaP/xAAaEAEAAwEBAQAAAAAAAAAAAAABABEhQTFx/9oACAEBAAE/IThjGNcnG2kA9InTQwBUbKQR+gS2kR//2gAMAwEAAgADAAAAEFz/AP/EABgRAQEAAwAAAAAAAAAAAAAAAAEAESFB/9oACAEDAQE/EFPYMav/xAAWEQEBAQAAAAAAAAAAAAAAAAABEQD/2gAIAQIBAT8QJIajUN//xAAaEAEBAAMBAQAAAAAAAAAAAAABEQAhMVFx/9oACAEBAAE/EJCaEY+HuXXpQEHbe4ikkAYZai5C0WactZ8tvrzBr07EO5//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/218f11a47ce0dcc8ee2cc71fe9fe8b84/70216/pre-programming-soldering.webp 250w,
+/static/218f11a47ce0dcc8ee2cc71fe9fe8b84/61bdd/pre-programming-soldering.webp 500w,
+/static/218f11a47ce0dcc8ee2cc71fe9fe8b84/d0dac/pre-programming-soldering.webp 1000w,
+/static/218f11a47ce0dcc8ee2cc71fe9fe8b84/21231/pre-programming-soldering.webp 1500w,
+/static/218f11a47ce0dcc8ee2cc71fe9fe8b84/521a5/pre-programming-soldering.webp 2000w,
+/static/218f11a47ce0dcc8ee2cc71fe9fe8b84/b7fd3/pre-programming-soldering.webp 4000w&quot;
+              sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/218f11a47ce0dcc8ee2cc71fe9fe8b84/b6501/pre-programming-soldering.jpg 250w,
+/static/218f11a47ce0dcc8ee2cc71fe9fe8b84/bb312/pre-programming-soldering.jpg 500w,
+/static/218f11a47ce0dcc8ee2cc71fe9fe8b84/4edc6/pre-programming-soldering.jpg 1000w,
+/static/218f11a47ce0dcc8ee2cc71fe9fe8b84/92dea/pre-programming-soldering.jpg 1500w,
+/static/218f11a47ce0dcc8ee2cc71fe9fe8b84/cbe2c/pre-programming-soldering.jpg 2000w,
+/static/218f11a47ce0dcc8ee2cc71fe9fe8b84/b28f0/pre-programming-soldering.jpg 4000w&quot;
+            sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/218f11a47ce0dcc8ee2cc71fe9fe8b84/4edc6/pre-programming-soldering.jpg&quot;
+            alt=&quot;pre programming soldering&quot;
+            title=&quot;pre programming soldering&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The programmer:
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; max-width: clamp(200px, calc(1.3297872340425532* 80vh), 1000px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/78dbbca912bddf42e31b57162bec503a/b28f0/programmer.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.2%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQBAwX/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAgP/2gAMAwEAAhADEAAAAWFItztQ3Q//xAAZEAADAQEBAAAAAAAAAAAAAAABAgMSEQD/2gAIAQEAAQUCaoUmmmKnrT405vrC+//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAEDAQE/AUf/xAAVEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAgBAgEBPwFX/8QAGxAAAQQDAAAAAAAAAAAAAAAAAAEQITEyQYH/2gAIAQEABj8ClqNr0nEo/8QAGhABAQADAQEAAAAAAAAAAAAAAQARITFBYf/aAAgBAQABPyEMJj1nbjT7i7zDBIejMIc3/9oADAMBAAIAAwAAABCwz//EABYRAAMAAAAAAAAAAAAAAAAAAAABEf/aAAgBAwEBPxBqkH//xAAWEQADAAAAAAAAAAAAAAAAAAAAARH/2gAIAQIBAT8QURZ//8QAGxABAAMBAQEBAAAAAAAAAAAAAQARIUFRcYH/2gAIAQEAAT8Q+cYF7NEgu+SwtTlJADEDoT9lkWbBs8yXyf8A/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/78dbbca912bddf42e31b57162bec503a/70216/programmer.webp 250w,
+/static/78dbbca912bddf42e31b57162bec503a/61bdd/programmer.webp 500w,
+/static/78dbbca912bddf42e31b57162bec503a/d0dac/programmer.webp 1000w,
+/static/78dbbca912bddf42e31b57162bec503a/21231/programmer.webp 1500w,
+/static/78dbbca912bddf42e31b57162bec503a/521a5/programmer.webp 2000w,
+/static/78dbbca912bddf42e31b57162bec503a/b7fd3/programmer.webp 4000w&quot;
+              sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/78dbbca912bddf42e31b57162bec503a/b6501/programmer.jpg 250w,
+/static/78dbbca912bddf42e31b57162bec503a/bb312/programmer.jpg 500w,
+/static/78dbbca912bddf42e31b57162bec503a/4edc6/programmer.jpg 1000w,
+/static/78dbbca912bddf42e31b57162bec503a/92dea/programmer.jpg 1500w,
+/static/78dbbca912bddf42e31b57162bec503a/cbe2c/programmer.jpg 2000w,
+/static/78dbbca912bddf42e31b57162bec503a/b28f0/programmer.jpg 4000w&quot;
+            sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/78dbbca912bddf42e31b57162bec503a/4edc6/programmer.jpg&quot;
+            alt=&quot;programmer&quot;
+            title=&quot;programmer&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Using the [esptool][6] from Github, this is the command I used after downloading the Tasmota firmware binary.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;esptool.py &lt;span class=&quot;token parameter variable&quot;&gt;--port&lt;/span&gt; /dev/cu.usbserial-A9UD533R write_flash 0x00000 Downloads/tasmota.bin&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Configuration&lt;/h3&gt;
+&lt;p&gt;I used the following template to configure the device for Tasmota:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;{&quot;NAME&quot;:&quot;BNETA WifiPlug&quot;,&quot;GPIO&quot;:[0,288,0,32,2688,2656,0,0,2624,544,224,0,0,0],&quot;FLAG&quot;:0,&quot;BASE&quot;:18}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Calibration&lt;/h3&gt;
+&lt;p&gt;The power metering also needs to be calibrated. The Tasmota documentation cover &lt;a href=&quot;https://tasmota.github.io/docs/Power-Monitoring-Calibration/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;power monitoring calibration&lt;/a&gt; in detail, however I found that using a &lt;a href=&quot;https://github.com/arendst/Tasmota/issues/5484&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;greasemonkey script&lt;/a&gt; in Tampermonkey to really fine tune this perfectly and basically, automates the calibration process apart from a few stemps, which I will quickly outline.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Install tamper monkey in Chrome.&lt;/li&gt;
+&lt;li&gt;Install the &lt;a href=&quot;https://github.com/arendst/Tasmota/issues/5484&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;greasemonkey script&lt;/a&gt; in Tampermonkey&lt;/li&gt;
+&lt;li&gt;Modify this script to whatever you will use. For example my bulb is rated 70w at 240v. So I had to put this into the script. The calibration is done based on this and the readings it get, real time.&lt;/li&gt;
+&lt;li&gt;Have a way to read your current voltage from your power provider as accurate as possible. I read it from my solar inverter.&lt;/li&gt;
+&lt;li&gt;Run these commands on the tasmota device in the console
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;VoltageSet 233.3
+PowerSet 70.0
+Backlog VoltRes 3; WattRes 3; CurrentSet 300.171526586620926&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;ps. VoltageSet is the voltage you read from your meter. So sometimes I
+type in 235.2 or 237.8 depending on whatever eskom is pushing into the
+house or if you on solar what the inverter is pushing into your house.
+The other commands are also in the script telling you what to do.
+pps. You need to work out the CurrentSet according to whatever you are
+using. There is a formula in the script.&lt;/p&gt;
+&lt;ol start=&quot;6&quot;&gt;
+&lt;li&gt;I then click on the calibrate button and wait for it to do it’s thing. Usually done within less than 2-3 minutes.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Have fun and enjoy automating!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Convert a CBI Astute Isolator with an ESP-12S]]></title><description><![CDATA[Some on their smart home journey, may have arrived at the time where they want to manage high loads remotely, such as a geyser. Typically…]]></description><link>https://blog.linuxgeek.za.net/smart-home/cbi-isolator-esp-conversion/</link><guid isPermaLink="false">https://blog.linuxgeek.za.net/smart-home/cbi-isolator-esp-conversion/</guid><pubDate>Thu, 25 Aug 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Some on their smart home journey, may have arrived at the time where they want to manage high loads remotely, such as a geyser. Typically, at least in South Africa, geysers come standard with a 3kW element which uses 13 amps. However in my own home, the geyser for the main bedroom was equipped with a 4kW element, which meant a whopping 18 amps! Most smart switches are rated 16 amp for the power metering switches or 10 amp for the non-metering options.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://cbi-lowvoltage.co.za/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;CBI-electric (Circuit Breaker Industries)&lt;/a&gt; released a a few “smart” switches that can handle 30 amp. The one I have here is the &lt;a href=&quot;https://cbi-lowvoltage.co.za/asi&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;CBI Astute Smart Isolator&lt;/a&gt; or ASI for short.&lt;/p&gt;
+&lt;p&gt;These are all built into the Tuya Smart IoT framework, which I am not a fan off. I prefer where possible using open-source software, including on the IoT devices in my house. In this guide, I will go over the process of converting one to just that!&lt;/p&gt;
+&lt;p&gt;Let’s start.&lt;/p&gt;
+&lt;h3&gt;🔩 Components&lt;/h3&gt;
+&lt;p&gt;You will need the following components:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://cbi-lowvoltage.co.za/asi&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;CBI Astute Smart Isolator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ESP-12S module from &lt;a href=&quot;https://za.rs-online.com/web/p/wi-fi-modules/1697593&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;RS-Components&lt;/a&gt; or &lt;a href=&quot;https://www.banggood.com/5pcs-ESP8266-ESP-12S-Serial-WIFI-Wireless-Module-Transceiver-ESP8266-4M-Flash-p-1493538.html?p=DX050122090268201806&amp;#x26;custlinkid=2697172&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Banggood&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.banggood.com/ESP8266-Test-Board-Burner-Development-Board-WIFI-Module-For-ESP-01-ESP-01S-ESP-12E-ESP-12F-ESP-12S-ESP-18T-p-1684992.htmlp=DX050122090268201806&amp;#x26;custlinkid=2697172&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ESP8266 development board&lt;/a&gt; or any usb to serial adapter, such as the popular &lt;a href=&quot;https://www.robotics.org.za/index.php?route=product/product&amp;#x26;product_id=2499&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;CH340G USB-Serial Converter&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can use the ESP-12F as well, but then you will require 2x 10k resistor in addition to the ESP-12F. The recommendation is a 10k 0805 SMD resistor and a 10k 1/4w leaded resistor.&lt;/p&gt;
+&lt;h3&gt;🔩 Flashing Tasmota to the ESP-12S&lt;/h3&gt;
+&lt;p&gt;First up, let’s program our new controller. I am using my &lt;a href=&quot;https://www.banggood.com/ESP8266-Test-Board-Burner-Development-Board-WIFI-Module-For-ESP-01-ESP-01S-ESP-12E-ESP-12F-ESP-12S-ESP-18T-p-1684992.htmlp=DX050122090268201806&amp;#x26;custlinkid=2697172&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ESP8266 development board&lt;/a&gt; here. This makes the process convenient and easy.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; max-width: clamp(200px, calc(1.7730496453900708* 80vh), 1000px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/69d6f28ee7260571582079f0852194b6/eacc7/esp-12s-programming.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 56.400000000000006%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAIEAwX/xAAVAQEBAAAAAAAAAAAAAAAAAAABAP/aAAwDAQACEAMQAAAB52yuNhAR/8QAGxAAAQQDAAAAAAAAAAAAAAAAAQACAxETISP/2gAIAQEAAQUCpRuo0HKQdBoZHr//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAZEAADAQEBAAAAAAAAAAAAAAAAARExAiH/2gAIAQEABj8C69wUTLGMpp//xAAaEAACAwEBAAAAAAAAAAAAAAAAAREhMVGR/9oACAEBAAE/IXfozpekohpWaniIzGkSnA5tn//aAAwDAQACAAMAAAAQUB//xAAVEQEBAAAAAAAAAAAAAAAAAAAQIf/aAAgBAwEBPxCn/8QAFhEBAQEAAAAAAAAAAAAAAAAAEQEQ/9oACAECAQE/EIGf/8QAGxABAAMBAAMAAAAAAAAAAAAAAQARMSFhoeH/2gAIAQEAAT8QIehk96nmRSL26i9Cc2RNg0fRGV8XSfAp/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/69d6f28ee7260571582079f0852194b6/70216/esp-12s-programming.webp 250w,
+/static/69d6f28ee7260571582079f0852194b6/61bdd/esp-12s-programming.webp 500w,
+/static/69d6f28ee7260571582079f0852194b6/d0dac/esp-12s-programming.webp 1000w,
+/static/69d6f28ee7260571582079f0852194b6/7d819/esp-12s-programming.webp 1100w&quot;
+              sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/69d6f28ee7260571582079f0852194b6/b6501/esp-12s-programming.jpg 250w,
+/static/69d6f28ee7260571582079f0852194b6/bb312/esp-12s-programming.jpg 500w,
+/static/69d6f28ee7260571582079f0852194b6/4edc6/esp-12s-programming.jpg 1000w,
+/static/69d6f28ee7260571582079f0852194b6/eacc7/esp-12s-programming.jpg 1100w&quot;
+            sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/69d6f28ee7260571582079f0852194b6/4edc6/esp-12s-programming.jpg&quot;
+            alt=&quot;ESP Programmer&quot;
+            title=&quot;ESP Programmer&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Using the &lt;a href=&quot;https://www.robotics.org.za/index.php?route=product/product&amp;#x26;product_id=2499&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;esptool&lt;/a&gt; from Github, this is the command I used after downloading the Tasmota firmware binary.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;esptool.py &lt;span class=&quot;token parameter variable&quot;&gt;--port&lt;/span&gt; /dev/cu.usbserial-A9UD533R write_flash 0x00000 Downloads/tasmota.bin&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Taking the CBI ASI apart&lt;/h3&gt;
+&lt;p&gt;Brand new ASI removed from packaging:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; max-width: clamp(200px, calc(0.7507507507507507* 80vh), 750.8px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d9ee49ef4e9370100df8d3813f9e3ffa/e35d9/cbi-isolator-01.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 133.20000000000002%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAMCBAUB/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgH/2gAMAwEAAhADEAAAAXdew3OACuyzFM3CYF//xAAdEAACAgIDAQAAAAAAAAAAAAABAgADECEREjIz/9oACAEBAAEFAggeJQVTqsTWQRxrF/qn6T//xAAVEQEBAAAAAAAAAAAAAAAAAAAQEf/aAAgBAwEBPwGkP//EABcRAAMBAAAAAAAAAAAAAAAAAAEQESH/2gAIAQIBAT8BAxVf/8QAGxAAAgIDAQAAAAAAAAAAAAAAAAECERAgITH/2gAIAQEABj8CcUkipVI8Hnu3/8QAGxAAAgMBAQEAAAAAAAAAAAAAAREAEDEhYXH/2gAIAQEAAT8h4hQ0iNArHCzEQiJA+1yCEFjItxeVYV//2gAMAwEAAgADAAAAEKjQcv/EABYRAQEBAAAAAAAAAAAAAAAAAAEQEf/aAAgBAwEBPxBWx1P/xAAWEQEBAQAAAAAAAAAAAAAAAAABECH/2gAIAQIBAT8QCDM//8QAHhAAAgICAgMAAAAAAAAAAAAAAREAITGBEFFhcbH/2gAIAQEAAT8QFFS3Qj1wixNDKx24JQepYQoMgPsJYfiF7a3CRuTghylXSAdQKM5YPUIoZSNPj//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/d9ee49ef4e9370100df8d3813f9e3ffa/70216/cbi-isolator-01.webp 250w,
+/static/d9ee49ef4e9370100df8d3813f9e3ffa/61bdd/cbi-isolator-01.webp 500w,
+/static/d9ee49ef4e9370100df8d3813f9e3ffa/d0dac/cbi-isolator-01.webp 1000w,
+/static/d9ee49ef4e9370100df8d3813f9e3ffa/21231/cbi-isolator-01.webp 1500w,
+/static/d9ee49ef4e9370100df8d3813f9e3ffa/521a5/cbi-isolator-01.webp 2000w,
+/static/d9ee49ef4e9370100df8d3813f9e3ffa/84cd4/cbi-isolator-01.webp 3000w&quot;
+              sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/d9ee49ef4e9370100df8d3813f9e3ffa/b6501/cbi-isolator-01.jpg 250w,
+/static/d9ee49ef4e9370100df8d3813f9e3ffa/bb312/cbi-isolator-01.jpg 500w,
+/static/d9ee49ef4e9370100df8d3813f9e3ffa/4edc6/cbi-isolator-01.jpg 1000w,
+/static/d9ee49ef4e9370100df8d3813f9e3ffa/92dea/cbi-isolator-01.jpg 1500w,
+/static/d9ee49ef4e9370100df8d3813f9e3ffa/cbe2c/cbi-isolator-01.jpg 2000w,
+/static/d9ee49ef4e9370100df8d3813f9e3ffa/e35d9/cbi-isolator-01.jpg 3000w&quot;
+            sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/d9ee49ef4e9370100df8d3813f9e3ffa/4edc6/cbi-isolator-01.jpg&quot;
+            alt=&quot;cbi isolator 01&quot;
+            title=&quot;cbi isolator 01&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; max-width: clamp(200px, calc(0.7507507507507507* 80vh), 750.8px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/75f1dafc964fb532f8e4d3574e88a38a/e35d9/cbi-isolator-02.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 133.20000000000002%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAMBBAUC/8QAFgEBAQEAAAAAAAAAAAAAAAAAAgEA/9oADAMBAAIQAxAAAAG3wqnNpgBKRoV1HEhv/8QAHBAAAgICAwAAAAAAAAAAAAAAAAIBAxESBBMh/9oACAEBAAEFAvcV1wrSchd3Zem6S5ciU7WEorEosMf/xAAVEQEBAAAAAAAAAAAAAAAAAAARIP/aAAgBAwEBPwFj/8QAFhEBAQEAAAAAAAAAAAAAAAAAARAR/9oACAECAQE/AQmz/8QAHRAAAgMAAgMAAAAAAAAAAAAAAREAAhADISJBUf/aAAgBAQAGPwJBAQ2YZzjofcrUWKwJsfIDd9Z5BwIZ/8QAHBABAAIDAAMAAAAAAAAAAAAAAQARITFREEGB/9oACAEBAAE/IaAYB7lvKNLgtKE5+S45cdxF6jtcB2IwJ9MbuakjChnvj//aAAwDAQACAAMAAAAQ5BZC/8QAFxEBAQEBAAAAAAAAAAAAAAAAARARIf/aAAgBAwEBPxB6ibP/xAAWEQEBAQAAAAAAAAAAAAAAAAARARD/2gAIAQIBAT8QgOQZ/8QAHRABAAMAAwADAAAAAAAAAAAAAQARITFBUYGR0f/aAAgBAQABPxCqERbr4lCA41XfsTd4xSLdBdVCL8SNC13DOoB2ufJXEJvVZzDxIsVb8PvYbcOfYQKhwvUeMg4X7HWf/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/75f1dafc964fb532f8e4d3574e88a38a/70216/cbi-isolator-02.webp 250w,
+/static/75f1dafc964fb532f8e4d3574e88a38a/61bdd/cbi-isolator-02.webp 500w,
+/static/75f1dafc964fb532f8e4d3574e88a38a/d0dac/cbi-isolator-02.webp 1000w,
+/static/75f1dafc964fb532f8e4d3574e88a38a/21231/cbi-isolator-02.webp 1500w,
+/static/75f1dafc964fb532f8e4d3574e88a38a/521a5/cbi-isolator-02.webp 2000w,
+/static/75f1dafc964fb532f8e4d3574e88a38a/84cd4/cbi-isolator-02.webp 3000w&quot;
+              sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/75f1dafc964fb532f8e4d3574e88a38a/b6501/cbi-isolator-02.jpg 250w,
+/static/75f1dafc964fb532f8e4d3574e88a38a/bb312/cbi-isolator-02.jpg 500w,
+/static/75f1dafc964fb532f8e4d3574e88a38a/4edc6/cbi-isolator-02.jpg 1000w,
+/static/75f1dafc964fb532f8e4d3574e88a38a/92dea/cbi-isolator-02.jpg 1500w,
+/static/75f1dafc964fb532f8e4d3574e88a38a/cbe2c/cbi-isolator-02.jpg 2000w,
+/static/75f1dafc964fb532f8e4d3574e88a38a/e35d9/cbi-isolator-02.jpg 3000w&quot;
+            sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/75f1dafc964fb532f8e4d3574e88a38a/4edc6/cbi-isolator-02.jpg&quot;
+            alt=&quot;cbi isolator 02&quot;
+            title=&quot;cbi isolator 02&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;First cover removed and we can see the 30A relay:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; max-width: clamp(200px, calc(0.7507507507507507* 80vh), 750.8px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d934f2853145bc0b9724d16c38010b66/e35d9/cbi-isolator-03.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 133.20000000000002%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAQDBf/EABUBAQEAAAAAAAAAAAAAAAAAAAEC/9oADAMBAAIQAxAAAAG5HAPYEOed2dAS/wD/xAAdEAACAgIDAQAAAAAAAAAAAAAAAQIDERIEEyEx/9oACAEBAAEFAmkKMU2cvGE8D+3V7kKfTWMjrgmf/8QAFREBAQAAAAAAAAAAAAAAAAAAESD/2gAIAQMBAT8BY//EABURAQEAAAAAAAAAAAAAAAAAAAEg/9oACAECAQE/AQj/xAAeEAABBAEFAAAAAAAAAAAAAAARAAECECESMVFhcf/aAAgBAQAGPwLLhHmophIdV4m1bVlisRr/xAAcEAADAQEAAwEAAAAAAAAAAAAAASERMUFhcfD/2gAIAQEAAT8h/JaZZH5DWjol2llCt8bRqhpSz0ozDWODVHyf0PQQmPp//9oADAMBAAIAAwAAABAT1Q7/xAAWEQEBAQAAAAAAAAAAAAAAAAABEBH/2gAIAQMBAT8QVsTZ/8QAFhEBAQEAAAAAAAAAAAAAAAAAAREQ/9oACAECAQE/EAlwZn//xAAcEAEAAwEAAwEAAAAAAAAAAAABABEhMUFRceH/2gAIAQEAAT8QS2AMD2miBUvnz7AHTYBYFNOeP2VDhjgQguZ6jmjsOwLpFKYzKeLOnCMvTvqVi0cpcFEjYk6T/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/d934f2853145bc0b9724d16c38010b66/70216/cbi-isolator-03.webp 250w,
+/static/d934f2853145bc0b9724d16c38010b66/61bdd/cbi-isolator-03.webp 500w,
+/static/d934f2853145bc0b9724d16c38010b66/d0dac/cbi-isolator-03.webp 1000w,
+/static/d934f2853145bc0b9724d16c38010b66/21231/cbi-isolator-03.webp 1500w,
+/static/d934f2853145bc0b9724d16c38010b66/521a5/cbi-isolator-03.webp 2000w,
+/static/d934f2853145bc0b9724d16c38010b66/84cd4/cbi-isolator-03.webp 3000w&quot;
+              sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/d934f2853145bc0b9724d16c38010b66/b6501/cbi-isolator-03.jpg 250w,
+/static/d934f2853145bc0b9724d16c38010b66/bb312/cbi-isolator-03.jpg 500w,
+/static/d934f2853145bc0b9724d16c38010b66/4edc6/cbi-isolator-03.jpg 1000w,
+/static/d934f2853145bc0b9724d16c38010b66/92dea/cbi-isolator-03.jpg 1500w,
+/static/d934f2853145bc0b9724d16c38010b66/cbe2c/cbi-isolator-03.jpg 2000w,
+/static/d934f2853145bc0b9724d16c38010b66/e35d9/cbi-isolator-03.jpg 3000w&quot;
+            sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/d934f2853145bc0b9724d16c38010b66/4edc6/cbi-isolator-03.jpg&quot;
+            alt=&quot;cbi isolator 03&quot;
+            title=&quot;cbi isolator 03&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Further removal will reveal the WR3E micro controller:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; max-width: clamp(200px, calc(1.3297872340425532* 80vh), 1000px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/560fb8a18cc29a58ededc127028087a2/b28f0/cbi-isolator-04.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.2%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAIEBf/EABYBAQEBAAAAAAAAAAAAAAAAAAEAAv/aAAwDAQACEAMQAAABZLZsucaJP//EABsQAQACAgMAAAAAAAAAAAAAAAIBAwAREhMx/9oACAEBAAEFAkdVVrYnsKziS59//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAGxAAAAcBAAAAAAAAAAAAAAAAAAECEBESISL/2gAIAQEABj8C4FZ6IHGspVVa3//EABwQAQACAgMBAAAAAAAAAAAAAAEAESExUWFx0f/aAAgBAQABPyFsPNWEIHyAIRLC7uaNL0QzaefsQKf/2gAMAwEAAgADAAAAEKvP/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAERIf/aAAgBAwEBPxBt3CH/xAAYEQADAQEAAAAAAAAAAAAAAAAAAREhYf/aAAgBAgEBPxBJTS8P/8QAHBABAQACAgMAAAAAAAAAAAAAAREAITGBQXHB/9oACAEBAAE/ENcJCTTfu8OUWJEfJ1l4shFycAibAerhp23rW4LG83P/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/560fb8a18cc29a58ededc127028087a2/70216/cbi-isolator-04.webp 250w,
+/static/560fb8a18cc29a58ededc127028087a2/61bdd/cbi-isolator-04.webp 500w,
+/static/560fb8a18cc29a58ededc127028087a2/d0dac/cbi-isolator-04.webp 1000w,
+/static/560fb8a18cc29a58ededc127028087a2/21231/cbi-isolator-04.webp 1500w,
+/static/560fb8a18cc29a58ededc127028087a2/521a5/cbi-isolator-04.webp 2000w,
+/static/560fb8a18cc29a58ededc127028087a2/b7fd3/cbi-isolator-04.webp 4000w&quot;
+              sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/560fb8a18cc29a58ededc127028087a2/b6501/cbi-isolator-04.jpg 250w,
+/static/560fb8a18cc29a58ededc127028087a2/bb312/cbi-isolator-04.jpg 500w,
+/static/560fb8a18cc29a58ededc127028087a2/4edc6/cbi-isolator-04.jpg 1000w,
+/static/560fb8a18cc29a58ededc127028087a2/92dea/cbi-isolator-04.jpg 1500w,
+/static/560fb8a18cc29a58ededc127028087a2/cbe2c/cbi-isolator-04.jpg 2000w,
+/static/560fb8a18cc29a58ededc127028087a2/b28f0/cbi-isolator-04.jpg 4000w&quot;
+            sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/560fb8a18cc29a58ededc127028087a2/4edc6/cbi-isolator-04.jpg&quot;
+            alt=&quot;cbi isolator 04&quot;
+            title=&quot;cbi isolator 04&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;Desoldering&lt;/h3&gt;
+&lt;p&gt;I start by putting the board into something to hold it well in place while I work with heat.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; max-width: clamp(200px, calc(1.3297872340425532* 80vh), 1000px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/33780aa000b6cd4c753dadb709ab3af3/b28f0/cbi-isolator-05.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.2%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAIDAf/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAABTIhYUzf/xAAZEAADAQEBAAAAAAAAAAAAAAABAgMAIxH/2gAIAQEAAQUCpTozhdx1J+F4laEKp//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABURAQEAAAAAAAAAAAAAAAAAABAh/9oACAECAQE/AYf/xAAcEAACAgIDAAAAAAAAAAAAAAAAAQIRIpESIUL/2gAIAQEABj8CxSbK4Rao87IVWTIK12U0tH//xAAaEAEBAQADAQAAAAAAAAAAAAABEQAhMUGB/9oACAEBAAE/IRBxiWibmXWGe5mW+PjKFDphmYleGRJZ/9oADAMBAAIAAwAAABDzz//EABYRAQEBAAAAAAAAAAAAAAAAAAEREP/aAAgBAwEBPxCK25//xAAXEQADAQAAAAAAAAAAAAAAAAAAASER/9oACAECAQE/EE4hp//EAB0QAQACAgIDAAAAAAAAAAAAAAERIQAxQXFRYYH/2gAIAQEAAT8QmIUKAOeqw8okIH0bZqe947hGUA2tPjisNihFxeFkYmkOznFixpB4z//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/33780aa000b6cd4c753dadb709ab3af3/70216/cbi-isolator-05.webp 250w,
+/static/33780aa000b6cd4c753dadb709ab3af3/61bdd/cbi-isolator-05.webp 500w,
+/static/33780aa000b6cd4c753dadb709ab3af3/d0dac/cbi-isolator-05.webp 1000w,
+/static/33780aa000b6cd4c753dadb709ab3af3/21231/cbi-isolator-05.webp 1500w,
+/static/33780aa000b6cd4c753dadb709ab3af3/521a5/cbi-isolator-05.webp 2000w,
+/static/33780aa000b6cd4c753dadb709ab3af3/b7fd3/cbi-isolator-05.webp 4000w&quot;
+              sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/33780aa000b6cd4c753dadb709ab3af3/b6501/cbi-isolator-05.jpg 250w,
+/static/33780aa000b6cd4c753dadb709ab3af3/bb312/cbi-isolator-05.jpg 500w,
+/static/33780aa000b6cd4c753dadb709ab3af3/4edc6/cbi-isolator-05.jpg 1000w,
+/static/33780aa000b6cd4c753dadb709ab3af3/92dea/cbi-isolator-05.jpg 1500w,
+/static/33780aa000b6cd4c753dadb709ab3af3/cbe2c/cbi-isolator-05.jpg 2000w,
+/static/33780aa000b6cd4c753dadb709ab3af3/b28f0/cbi-isolator-05.jpg 4000w&quot;
+            sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/33780aa000b6cd4c753dadb709ab3af3/4edc6/cbi-isolator-05.jpg&quot;
+            alt=&quot;cbi isolator 05&quot;
+            title=&quot;cbi isolator 05&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;My eye sight is also not what it used to be for something up close so I need some help.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; max-width: clamp(200px, calc(1.3297872340425532* 80vh), 1000px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/97540fcfcacc44a2d8ddf6cc5a1c51db/b28f0/cbi-isolator-06.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.2%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEAv/EABUBAQEAAAAAAAAAAAAAAAAAAAIB/9oADAMBAAIQAxAAAAFDssFmLQv/xAAZEAEAAwEBAAAAAAAAAAAAAAACAAExESH/2gAIAQEAAQUCsmpyHF6qLU2f/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAIAQMBAT8BR//EABURAQEAAAAAAAAAAAAAAAAAAAAS/9oACAECAQE/AVP/xAAeEAACAQMFAAAAAAAAAAAAAAAAARECEiExUWFxsf/aAAgBAQAGPwKdxazyjKRibi6t9GPD/8QAGxAAAgMBAQEAAAAAAAAAAAAAAREAITFBUWH/2gAIAQEAAT8hrAZDRcAhAueU+g7AU6BsG2q6j2i8Mf/aAAwDAQACAAMAAAAQ7y//xAAWEQEBAQAAAAAAAAAAAAAAAAABECH/2gAIAQMBAT8QNY//xAAXEQEAAwAAAAAAAAAAAAAAAAABEBEh/9oACAECAQE/EHC4f//EAB0QAQEAAgIDAQAAAAAAAAAAAAERACExQVFhcZH/2gAIAQEAAT8QTEAxL44n3vxh1IRMNhaPqZGkdSK7xeiloA3U9YZWiyDzsfzF8Kugx4TP/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/97540fcfcacc44a2d8ddf6cc5a1c51db/70216/cbi-isolator-06.webp 250w,
+/static/97540fcfcacc44a2d8ddf6cc5a1c51db/61bdd/cbi-isolator-06.webp 500w,
+/static/97540fcfcacc44a2d8ddf6cc5a1c51db/d0dac/cbi-isolator-06.webp 1000w,
+/static/97540fcfcacc44a2d8ddf6cc5a1c51db/21231/cbi-isolator-06.webp 1500w,
+/static/97540fcfcacc44a2d8ddf6cc5a1c51db/521a5/cbi-isolator-06.webp 2000w,
+/static/97540fcfcacc44a2d8ddf6cc5a1c51db/b7fd3/cbi-isolator-06.webp 4000w&quot;
+              sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/97540fcfcacc44a2d8ddf6cc5a1c51db/b6501/cbi-isolator-06.jpg 250w,
+/static/97540fcfcacc44a2d8ddf6cc5a1c51db/bb312/cbi-isolator-06.jpg 500w,
+/static/97540fcfcacc44a2d8ddf6cc5a1c51db/4edc6/cbi-isolator-06.jpg 1000w,
+/static/97540fcfcacc44a2d8ddf6cc5a1c51db/92dea/cbi-isolator-06.jpg 1500w,
+/static/97540fcfcacc44a2d8ddf6cc5a1c51db/cbe2c/cbi-isolator-06.jpg 2000w,
+/static/97540fcfcacc44a2d8ddf6cc5a1c51db/b28f0/cbi-isolator-06.jpg 4000w&quot;
+            sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/97540fcfcacc44a2d8ddf6cc5a1c51db/4edc6/cbi-isolator-06.jpg&quot;
+            alt=&quot;cbi isolator 06&quot;
+            title=&quot;cbi isolator 06&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Once the WR3E is removed, this is what it looks like.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; max-width: clamp(200px, calc(1.3297872340425532* 80vh), 1000px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/e9e899f432094cf9423e9b09c66bf135/b28f0/cbi-isolator-07.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.2%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAwUA/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAECA//aAAwDAQACEAMQAAABB56kVdCy0//EABwQAAIBBQEAAAAAAAAAAAAAAAECAwAEERQhMv/aAAgBAQABBQJJMTbBKx3AKp6Y8Ff/xAAXEQADAQAAAAAAAAAAAAAAAAAAAhFB/9oACAEDAQE/Aa2FP//EABgRAAIDAAAAAAAAAAAAAAAAAAABAhMh/9oACAECAQE/AXHSs//EABsQAAIBBQAAAAAAAAAAAAAAAAABERAhMTLh/9oACAEBAAY/AnljtB0k1in/xAAcEAACAwADAQAAAAAAAAAAAAABIQARMUFRYXH/2gAIAQEAAT8hsdgfMVTAezOkUnCls9Swwj7cQbP/2gAMAwEAAgADAAAAEGMP/8QAFxEAAwEAAAAAAAAAAAAAAAAAARARUf/aAAgBAwEBPxA1wv8A/8QAFhEBAQEAAAAAAAAAAAAAAAAAARAh/9oACAECAQE/ECNT/8QAHBABAAMAAgMAAAAAAAAAAAAAAQARITFBYYHh/9oACAEBAAE/EDcBwL2s+xQC+vN3qWra4auGxVjyAMX3FuiDbWE0HfzP/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/e9e899f432094cf9423e9b09c66bf135/70216/cbi-isolator-07.webp 250w,
+/static/e9e899f432094cf9423e9b09c66bf135/61bdd/cbi-isolator-07.webp 500w,
+/static/e9e899f432094cf9423e9b09c66bf135/d0dac/cbi-isolator-07.webp 1000w,
+/static/e9e899f432094cf9423e9b09c66bf135/21231/cbi-isolator-07.webp 1500w,
+/static/e9e899f432094cf9423e9b09c66bf135/521a5/cbi-isolator-07.webp 2000w,
+/static/e9e899f432094cf9423e9b09c66bf135/b7fd3/cbi-isolator-07.webp 4000w&quot;
+              sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/e9e899f432094cf9423e9b09c66bf135/b6501/cbi-isolator-07.jpg 250w,
+/static/e9e899f432094cf9423e9b09c66bf135/bb312/cbi-isolator-07.jpg 500w,
+/static/e9e899f432094cf9423e9b09c66bf135/4edc6/cbi-isolator-07.jpg 1000w,
+/static/e9e899f432094cf9423e9b09c66bf135/92dea/cbi-isolator-07.jpg 1500w,
+/static/e9e899f432094cf9423e9b09c66bf135/cbe2c/cbi-isolator-07.jpg 2000w,
+/static/e9e899f432094cf9423e9b09c66bf135/b28f0/cbi-isolator-07.jpg 4000w&quot;
+            sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/e9e899f432094cf9423e9b09c66bf135/4edc6/cbi-isolator-07.jpg&quot;
+            alt=&quot;cbi isolator 07&quot;
+            title=&quot;cbi isolator 07&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;I then again have some help to keep the ESP-12S in place while I add solder back on.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; max-width: clamp(200px, calc(1.3297872340425532* 80vh), 1000px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/bf89c86e1e032ea52a4d6661252f3898/b28f0/cbi-isolator-08.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.2%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMFAv/EABYBAQEBAAAAAAAAAAAAAAAAAAEAAv/aAAwDAQACEAMQAAAB0ya2LJDNP//EABsQAAICAwEAAAAAAAAAAAAAAAECBBEAAxIi/9oACAEBAAEFAjI5wSio1SFdfNmqQ0P/xAAWEQEBAQAAAAAAAAAAAAAAAAABEBH/2gAIAQMBAT8B1Z//xAAYEQACAwAAAAAAAAAAAAAAAAAAAgERE//aAAgBAgEBPwFkqTM//8QAGxAAAgIDAQAAAAAAAAAAAAAAAAECESExMnH/2gAIAQEABj8CUa2cKkW6ieGU8mz/xAAbEAADAQADAQAAAAAAAAAAAAAAAREhMUFRYf/aAAgBAQABPyGtF93SZgjFTd5ZKJNq+DnsJPmGGo3w/9oADAMBAAIAAwAAABA43//EABcRAQADAAAAAAAAAAAAAAAAAAABIVH/2gAIAQMBAT8Q0Kl//8QAGBEBAAMBAAAAAAAAAAAAAAAAAQARIUH/2gAIAQIBAT8QAKMZY6T/xAAbEAEAAwEBAQEAAAAAAAAAAAABABEhMXFBgf/aAAgBAQABPxDgGW+hexVhQFbFigfVmbM+CbB99iF4LMGvc/JcV1mm0//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/bf89c86e1e032ea52a4d6661252f3898/70216/cbi-isolator-08.webp 250w,
+/static/bf89c86e1e032ea52a4d6661252f3898/61bdd/cbi-isolator-08.webp 500w,
+/static/bf89c86e1e032ea52a4d6661252f3898/d0dac/cbi-isolator-08.webp 1000w,
+/static/bf89c86e1e032ea52a4d6661252f3898/21231/cbi-isolator-08.webp 1500w,
+/static/bf89c86e1e032ea52a4d6661252f3898/521a5/cbi-isolator-08.webp 2000w,
+/static/bf89c86e1e032ea52a4d6661252f3898/b7fd3/cbi-isolator-08.webp 4000w&quot;
+              sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/bf89c86e1e032ea52a4d6661252f3898/b6501/cbi-isolator-08.jpg 250w,
+/static/bf89c86e1e032ea52a4d6661252f3898/bb312/cbi-isolator-08.jpg 500w,
+/static/bf89c86e1e032ea52a4d6661252f3898/4edc6/cbi-isolator-08.jpg 1000w,
+/static/bf89c86e1e032ea52a4d6661252f3898/92dea/cbi-isolator-08.jpg 1500w,
+/static/bf89c86e1e032ea52a4d6661252f3898/cbe2c/cbi-isolator-08.jpg 2000w,
+/static/bf89c86e1e032ea52a4d6661252f3898/b28f0/cbi-isolator-08.jpg 4000w&quot;
+            sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/bf89c86e1e032ea52a4d6661252f3898/4edc6/cbi-isolator-08.jpg&quot;
+            alt=&quot;cbi isolator 08&quot;
+            title=&quot;cbi isolator 08&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;Testing&lt;/h3&gt;
+&lt;p&gt;Initial quick testing, only to make sure it turns on and look happy.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; max-width: clamp(200px, calc(0.7507507507507507* 80vh), 750.8px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/4c2bd8125d92073cafe06ffa39b815d0/e35d9/cbi-isolator-09.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 133.20000000000002%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAIEAwH/xAAXAQEBAQEAAAAAAAAAAAAAAAACAwAB/9oADAMBAAIQAxAAAAGcfvNoWkqQNnWwwoV//8QAGhAAAwADAQAAAAAAAAAAAAAAAQIDABESMf/aAAgBAQABBQKqOVoCUSe1evQm6ht5UDiCaTG8Hmf/xAAVEQEBAAAAAAAAAAAAAAAAAAAQAf/aAAgBAwEBPwEh/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAEQEf/aAAgBAgEBPwE1jn//xAAgEAABAwIHAAAAAAAAAAAAAAABAAIRIYEQEiAiMTJx/9oACAEBAAY/Aohtl1ZZDY26ygRVEuPlMONX/8QAGhAAAwEBAQEAAAAAAAAAAAAAAREhADFxEP/aAAgBAQABPyFKegLTECmNxDkhejhuhkK8QM+JxjUExpBMC4pueNg9IfP/2gAMAwEAAgADAAAAED8RQf/EABgRAQEAAwAAAAAAAAAAAAAAAAABESFR/9oACAEDAQE/ENpI6Zf/xAAYEQADAQEAAAAAAAAAAAAAAAAAESEBUf/aAAgBAgEBPxCKGsOBH//EABwQAQACAwEBAQAAAAAAAAAAAAEAESExQZFRcf/aAAgBAQABPxAu2COQ9lWoFg26o+wzqCsqPrXXcKjRTYoTnP2OCYUtAUffYWgcFTYIcIQuipsXKDlfYm6uApYxHM//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/4c2bd8125d92073cafe06ffa39b815d0/70216/cbi-isolator-09.webp 250w,
+/static/4c2bd8125d92073cafe06ffa39b815d0/61bdd/cbi-isolator-09.webp 500w,
+/static/4c2bd8125d92073cafe06ffa39b815d0/d0dac/cbi-isolator-09.webp 1000w,
+/static/4c2bd8125d92073cafe06ffa39b815d0/21231/cbi-isolator-09.webp 1500w,
+/static/4c2bd8125d92073cafe06ffa39b815d0/521a5/cbi-isolator-09.webp 2000w,
+/static/4c2bd8125d92073cafe06ffa39b815d0/84cd4/cbi-isolator-09.webp 3000w&quot;
+              sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/4c2bd8125d92073cafe06ffa39b815d0/b6501/cbi-isolator-09.jpg 250w,
+/static/4c2bd8125d92073cafe06ffa39b815d0/bb312/cbi-isolator-09.jpg 500w,
+/static/4c2bd8125d92073cafe06ffa39b815d0/4edc6/cbi-isolator-09.jpg 1000w,
+/static/4c2bd8125d92073cafe06ffa39b815d0/92dea/cbi-isolator-09.jpg 1500w,
+/static/4c2bd8125d92073cafe06ffa39b815d0/cbe2c/cbi-isolator-09.jpg 2000w,
+/static/4c2bd8125d92073cafe06ffa39b815d0/e35d9/cbi-isolator-09.jpg 3000w&quot;
+            sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/4c2bd8125d92073cafe06ffa39b815d0/4edc6/cbi-isolator-09.jpg&quot;
+            alt=&quot;cbi isolator 09&quot;
+            title=&quot;cbi isolator 09&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Aaand time to put everything back together.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; max-width: clamp(200px, calc(0.7507507507507507* 80vh), 750.8px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/bad861fcb33eec12ba2a0524e3cd6bee/e35d9/cbi-isolator-10.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 133.20000000000002%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAMBAgQF/8QAFgEBAQEAAAAAAAAAAAAAAAAAAgMB/9oADAMBAAIQAxAAAAFF25zvQFE3bMa6CCCb/8QAHBAAAgICAwAAAAAAAAAAAAAAAgMBEgARECEi/9oACAEBAAEFAjCxMWNVltZTQBd0llw2MZQJmPMIKT5//8QAFxEAAwEAAAAAAAAAAAAAAAAAAAEQEf/aAAgBAwEBPwExX//EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAgBAgEBPwFbWsf/xAAeEAEAAwAABwAAAAAAAAAAAAABAAIREBIhIkFhgf/aAAgBAQAGPwLTA8xSVyuRfcbW+TUiWyPKmzCd3Xj/AP/EAB0QAQACAQUBAAAAAAAAAAAAAAEAESEQMUFRYYH/2gAIAQEAAT8hSgsxtkriFgcK4gBnSMjFGzueyKwSkzJvMM1DphKEDybsPjRn/9oADAMBAAIAAwAAABCLEU7/xAAXEQEBAQEAAAAAAAAAAAAAAAABEQAh/9oACAEDAQE/EB7MIXBW67//xAAYEQADAQEAAAAAAAAAAAAAAAAAAREQIf/aAAgBAgEBPxCcEHBwpj//xAAeEAEAAwACAgMAAAAAAAAAAAABABEhMUFRYXGB0f/aAAgBAQABPxA0IgCBZdyh9hwePqW00o7e5fQzbxZFIxTtHGrzEOq2GRRxAzKIGbnuPQTyhzvIOCusW+YZaFcp/IgOAfBE3P/Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/bad861fcb33eec12ba2a0524e3cd6bee/70216/cbi-isolator-10.webp 250w,
+/static/bad861fcb33eec12ba2a0524e3cd6bee/61bdd/cbi-isolator-10.webp 500w,
+/static/bad861fcb33eec12ba2a0524e3cd6bee/d0dac/cbi-isolator-10.webp 1000w,
+/static/bad861fcb33eec12ba2a0524e3cd6bee/21231/cbi-isolator-10.webp 1500w,
+/static/bad861fcb33eec12ba2a0524e3cd6bee/521a5/cbi-isolator-10.webp 2000w,
+/static/bad861fcb33eec12ba2a0524e3cd6bee/84cd4/cbi-isolator-10.webp 3000w&quot;
+              sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/bad861fcb33eec12ba2a0524e3cd6bee/b6501/cbi-isolator-10.jpg 250w,
+/static/bad861fcb33eec12ba2a0524e3cd6bee/bb312/cbi-isolator-10.jpg 500w,
+/static/bad861fcb33eec12ba2a0524e3cd6bee/4edc6/cbi-isolator-10.jpg 1000w,
+/static/bad861fcb33eec12ba2a0524e3cd6bee/92dea/cbi-isolator-10.jpg 1500w,
+/static/bad861fcb33eec12ba2a0524e3cd6bee/cbe2c/cbi-isolator-10.jpg 2000w,
+/static/bad861fcb33eec12ba2a0524e3cd6bee/e35d9/cbi-isolator-10.jpg 3000w&quot;
+            sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/bad861fcb33eec12ba2a0524e3cd6bee/4edc6/cbi-isolator-10.jpg&quot;
+            alt=&quot;cbi isolator 10&quot;
+            title=&quot;cbi isolator 10&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;Configuration&lt;/h3&gt;
+&lt;p&gt;I used the following template to configure the device for Tasmota.&lt;/p&gt;
+&lt;p&gt;Smart Isolator:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;{&quot;NAME&quot;:&quot;CBI Astute&quot;,&quot;GPIO&quot;:[2624,320,0,0,0,224,0,0,2720,32,2656,0,0,0],&quot;FLAG&quot;:0,&quot;BASE&quot;:6}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Smart Switch:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;{&quot;NAME&quot;:&quot;CBI Astute&quot;,&quot;GPIO&quot;:[131,56,0,0,0,21,0,0,134,17,132,0,0],&quot;FLAG&quot;:0,&quot;BASE&quot;:6}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Calibration&lt;/h3&gt;
+&lt;p&gt;The power metering also needs to be calibrated. The Tasmota documentation cover &lt;a href=&quot;https://tasmota.github.io/docs/Power-Monitoring-Calibration/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;power monitoring calibration&lt;/a&gt; in detail, however I found that using a &lt;a href=&quot;https://github.com/arendst/Tasmota/issues/5484&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;greasemonkey script&lt;/a&gt; in Tampermonkey to really fine tune this perfectly and basically, automates the calibration process apart from a few stemps, which I will quickly outline.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Install tamper monkey in Chrome.&lt;/li&gt;
+&lt;li&gt;Install the &lt;a href=&quot;https://github.com/arendst/Tasmota/issues/5484&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;greasemonkey script&lt;/a&gt; in Tampermonkey&lt;/li&gt;
+&lt;li&gt;Modify this script to whatever you will use. For example my bulb is rated 70w at 240v. So I had to put this into the script. The calibration is done based on this and the readings it get, real time.&lt;/li&gt;
+&lt;li&gt;Have a way to read your current voltage from your power provider as accurate as possible. I read it from my solar inverter.&lt;/li&gt;
+&lt;li&gt;Run these commands on the tasmota device in the console
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;VoltageSet 233.3
+PowerSet 70.0
+Backlog VoltRes 3; WattRes 3; CurrentSet 300.171526586620926&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;ps. VoltageSet is the voltage you read from your meter. So sometimes I
+type in 235.2 or 237.8 depending on whatever eskom is pushing into the
+house or if you on solar what the inverter is pushing into your house.
+The other commands are also in the script telling you what to do.
+pps. You need to work out the CurrentSet according to whatever you are
+using. There is a formula in the script.&lt;/p&gt;
+&lt;ol start=&quot;6&quot;&gt;
+&lt;li&gt;I then click on the calibrate button and wait for it to do it’s thing. Usually done within less than 2-3 minutes.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Have fun and enjoy automating!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Install Nodered using docker-compose and CloudFlare]]></title><description><![CDATA[Node-RED A visual tool for wiring the Internet of Things.  Overview I am planning on writing a series of different posts on using Node-RED…]]></description><link>https://blog.linuxgeek.za.net/projects/install-nodered-with-docker-and-cloudflare/</link><guid isPermaLink="false">https://blog.linuxgeek.za.net/projects/install-nodered-with-docker-and-cloudflare/</guid><pubDate>Mon, 22 Jul 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Node-RED&lt;/h2&gt;
+&lt;p&gt;A visual tool for wiring the Internet of Things.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; max-width: clamp(200px, calc(1.5151515151515151* 80vh), 1000px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/8376ee051fbea0a9cc0c25961eb90c0b/719d3/poster.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 66%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAACHElEQVQ4y5WSS2/TQBSF/adpi9qERkqrdgXKL6hgAwtYILEBIYQIUnelgkjQ1K1jjzNO/CaOH43tD81ULbS81CMdacayv3uP7zX2d/oMHj1kd3eHrc4We/t79Ho91tY32Njs0Ok+4N76Bvc7PTY3t1hbW6PT6Wj3+30ODg4YDAZsb2/T7XYxkizHXxS0QJ3X2lp1AZmEtgIuoBDcVlEUv90N82jE8NkrZs4Uz50zsz3yvCCL54TWZ9LAwxUnHB8+xRIn1A3UdU3TNHieRxzHhGFImqb6bgTWGeeHH8iiEF+GOKcOYixIowWq18gdc3z4ktdvHjN8+4RYmrqbtm3Isgzf9zWsLEtmsxmGnI04/vKcJJXky5J8saTKK+qLlfqKVZVTLRe0VQmrira+uI4YRhG2bRPMZyRxjCMEhmmafBwOiaOIP2lVN3y1JJ++WTquJc95f/SOUzEmTRKk5yG/F5R1w1x16FkjRsMXpKG8jNI0tG2rfRmtvVEgL3OSLKaocpIkYWI7jG2PMEzw5BTDdQVRGFDkuUp4DfsVePvZlbwgYjSRONInCGLkdIoxmUyYz+csl8sbgCv9rYCSmrCC+EFAUZZIKTGEEHo6t4H/s1KSpgjXxXYcHV8D1ZTUIdeR2zsB4zDCNs+Y2s7PPVS7tFgsrju8i0I/YKKAQmiG2klDbXkURdrqrFpXcFXoX1bvqF9lnpmcW5Y+u67LD8ityYg/V4JuAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/8376ee051fbea0a9cc0c25961eb90c0b/70216/poster.webp 250w,
+/static/8376ee051fbea0a9cc0c25961eb90c0b/61bdd/poster.webp 500w,
+/static/8376ee051fbea0a9cc0c25961eb90c0b/d0dac/poster.webp 1000w,
+/static/8376ee051fbea0a9cc0c25961eb90c0b/71d60/poster.webp 1258w&quot;
+              sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/8376ee051fbea0a9cc0c25961eb90c0b/41b2e/poster.png 250w,
+/static/8376ee051fbea0a9cc0c25961eb90c0b/36a81/poster.png 500w,
+/static/8376ee051fbea0a9cc0c25961eb90c0b/ea415/poster.png 1000w,
+/static/8376ee051fbea0a9cc0c25961eb90c0b/719d3/poster.png 1258w&quot;
+            sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/8376ee051fbea0a9cc0c25961eb90c0b/ea415/poster.png&quot;
+            alt=&quot;poster&quot;
+            title=&quot;poster&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Overview&lt;/h2&gt;
+&lt;p&gt;I am planning on writing a series of different posts on using &lt;a href=&quot;https://nodered.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Node-RED&lt;/a&gt; and so this is the first post of the series. It will have a small twist, in that I will be setting it up using docker-compose with a &lt;a href=&quot;https://letsencrypt.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Let’s Encrypt&lt;/a&gt; certificate using Traefik for the reverse proxy and lastly, &lt;a href=&quot;https://www.cloudflare.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;CloudFlare&lt;/a&gt; for DNS.&lt;/p&gt;
+&lt;p&gt;As a bonus, I will also add &lt;a href=&quot;https://github.com/containrrr/watchtower&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Watchtower&lt;/a&gt; to automate updates of &lt;a href=&quot;https://traefik.io/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Traefik&lt;/a&gt; and [Node-Red.]&lt;/p&gt;
+&lt;h2&gt;Goals&lt;/h2&gt;
+&lt;p&gt;After finishing the instructions in this blog post, you will have:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Used docker-compose&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://nodered.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Node-RED&lt;/a&gt; installed without exposing the ports using docker&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://traefik.io/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Traefik&lt;/a&gt; installed as reverse-proxy&lt;/li&gt;
+&lt;li&gt;Ability to have multiple apps behind unique subdomains on your domain.tld using &lt;a href=&quot;https://letsencrypt.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Let’s Encrypt&lt;/a&gt; certificates&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux Host for Docker and &lt;a href=&quot;https://nodered.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Node-RED&lt;/a&gt; - Can be a VPS or Raspberry Pi ect.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.cloudflare.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;CloudFlare&lt;/a&gt; account with &lt;a href=&quot;https://support.cloudflare.com/hc/en-us/articles/200167836-Where-do-I-find-my-Cloudflare-API-key-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;API key&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Domain with DNS hosted by &lt;a href=&quot;https://www.cloudflare.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;CloudFlare&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;You will need to point a *.domain.tld record to your Linux host. The reason for this is, we will be using subdomains to point to different services running in docker. In this example, I will be pointing nodered.domain.tld to my nodered container for easy access.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Preperation&lt;/h2&gt;
+&lt;p&gt;Usually I have a separate volume for my data mounted on /data and on this volume I will create a folder named &lt;em&gt;docker&lt;/em&gt; with all my files in.&lt;/p&gt;
+&lt;p&gt;We will create 2 files /data/docker to start with.&lt;/p&gt;
+&lt;p&gt;First file will contain our authentication and keys: &lt;code class=&quot;language-text&quot;&gt;.env&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token assign-left variable&quot;&gt;PUID&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1001&lt;/span&gt;
+&lt;span class=&quot;token assign-left variable&quot;&gt;PGID&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1001&lt;/span&gt;
+&lt;span class=&quot;token assign-left variable&quot;&gt;TZ&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;Africa/Johannesburg
+&lt;span class=&quot;token assign-left variable&quot;&gt;USERDIR&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/data
+
+&lt;span class=&quot;token assign-left variable&quot;&gt;DOMAINNAME&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;domain.tld
+&lt;span class=&quot;token assign-left variable&quot;&gt;CLOUDFLARE_EMAIL&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;cloudflare@domain.tld
+&lt;span class=&quot;token assign-left variable&quot;&gt;CLOUDFLARE_API_KEY&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;abcdefghiklmnopqrstvwxyz01234567897e8c6
+
+&lt;span class=&quot;token assign-left variable&quot;&gt;HTTP_USERNAME&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;tinuva
+&lt;span class=&quot;token assign-left variable&quot;&gt;HTTP_PASSWORD&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$apr1&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$bJ77aaaaaaaaaaaaaaaaaaaaaaaaaaax&lt;/span&gt;/vO0
+&lt;span class=&quot;token assign-left variable&quot;&gt;API_HTTP_USERNAME&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;nodered
+&lt;span class=&quot;token assign-left variable&quot;&gt;API_HTTP_PASSWORD&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$apr1&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$bbbbbbbbbbbbbbbbbbbbbbbbbnElz47L1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To do:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Replace &lt;code class=&quot;language-text&quot;&gt;domain.tld&lt;/code&gt; with your domain that is hosted with &lt;a href=&quot;https://www.cloudflare.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;CloudFlare&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Set your timezone&lt;/li&gt;
+&lt;li&gt;Create a .htpass file with &lt;a href=&quot;http://aspirine.org/htpasswd_en.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;HTPASSWD Generator&lt;/a&gt; then place the username and passwords into the above fields.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Initially we will only use the HTTP_USERNAME and HTTP_PASSWORD. The API versions will be used at a later stage when we create an API endpoint using &lt;a href=&quot;https://nodered.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Node-RED&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Next we will create a &lt;code class=&quot;language-text&quot;&gt;docker-compose.yml&lt;/code&gt; file/&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;2.1&apos;&lt;/span&gt;
+
+&lt;span class=&quot;token key atrule&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;nodered&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; nodered/node&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;red&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;docker&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;slim&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;v10
+    &lt;span class=&quot;token key atrule&quot;&gt;container_name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; nodered
+    &lt;span class=&quot;token key atrule&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; $&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;USERDIR&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;/docker/nodered/data&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;/data
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; /etc/localtime&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;/etc/localtime
+    &lt;span class=&quot;token key atrule&quot;&gt;restart&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; always
+    &lt;span class=&quot;token key atrule&quot;&gt;mem_limit&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 100m
+    &lt;span class=&quot;token key atrule&quot;&gt;cpu_shares&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;50&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;traefik.enable=true&quot;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;traefik.backend=nodered&quot;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;traefik.frontend.redirect.entryPoint=https&quot;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;traefik.port=1880&quot;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;traefik.protocol=http&quot;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;traefik.docker.network=docker_traefik_proxy&quot;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;traefik.ifttt.frontend.rule=Host:nodered.${DOMAINNAME};Path:/ifttt&quot;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;traefik.ifttt.frontend.auth.basic.users=${API_HTTP_USERNAME}:${API_HTTP_PASSWORD}&quot;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;traefik.web.frontend.rule=Host:nodered.${DOMAINNAME}&quot;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;traefik.web.frontend.auth.basic.users=${HTTP_USERNAME}:${HTTP_PASSWORD}&quot;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; com.centurylinklabs.watchtower.enable=true
+
+  &lt;span class=&quot;token key atrule&quot;&gt;traefik&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;hostname&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; traefik
+    &lt;span class=&quot;token key atrule&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; traefik&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;latest
+    &lt;span class=&quot;token key atrule&quot;&gt;container_name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; traefik
+    &lt;span class=&quot;token key atrule&quot;&gt;restart&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; always
+    &lt;span class=&quot;token key atrule&quot;&gt;domainname&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; $&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;DOMAINNAME&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;cpu_shares&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;30&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;mem_limit&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 250m
+    &lt;span class=&quot;token key atrule&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token datetime number&quot;&gt;80:80&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; 443&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;443&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; CLOUDFLARE_EMAIL=$&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;CLOUDFLARE_EMAIL&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; CLOUDFLARE_API_KEY=$&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;CLOUDFLARE_API_KEY&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;traefik.enable=true&quot;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;traefik.backend=traefik&quot;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;traefik.frontend.rule=Host:traefik.${DOMAINNAME}&quot;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;traefik.frontend.redirect.entryPoint=https&quot;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;traefik.port=8080&quot;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;traefik.docker.network=docker_traefik_proxy&quot;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;traefik.frontend.auth.basic.users=${HTTP_USERNAME}:${HTTP_PASSWORD}&quot;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; com.centurylinklabs.watchtower.enable=true
+    &lt;span class=&quot;token key atrule&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; /var/run/docker.sock&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;/var/run/docker.sock&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;ro
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; $&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;USERDIR&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;/docker/traefik&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;/etc/traefik
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; $&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;USERDIR&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;/docker/shared&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;/shared
+
+  &lt;span class=&quot;token key atrule&quot;&gt;watchtower&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; v2tec/watchtower&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;latest
+    &lt;span class=&quot;token key atrule&quot;&gt;container_name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; watchtower
+    &lt;span class=&quot;token key atrule&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; /var/run/docker.sock&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;/var/run/docker.sock
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; /etc/localtime&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;/etc/localtime&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;ro
+    &lt;span class=&quot;token key atrule&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;schedule &quot;0 30 5 * * &lt;span class=&quot;token important&quot;&gt;*&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;cleanup &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;label&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;enable
+    &lt;span class=&quot;token key atrule&quot;&gt;restart&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; always
+    &lt;span class=&quot;token key atrule&quot;&gt;mem_limit&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 50m
+    &lt;span class=&quot;token key atrule&quot;&gt;cpu_shares&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;25&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We also need to create folders and set ownership to match the above.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; /data/docker/shared
+&lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-p&lt;/span&gt; /data/docker/nodered/data
+&lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-p&lt;/span&gt; /data/docker/traefik/acme
+
+&lt;span class=&quot;token function&quot;&gt;touch&lt;/span&gt; /data/docker/traefik/rules.toml
+&lt;span class=&quot;token function&quot;&gt;touch&lt;/span&gt; /data/docker/traefik/acme/acme.json
+&lt;span class=&quot;token function&quot;&gt;chmod&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;600&lt;/span&gt; /data/docker/traefik/acme/acme.json
+
+&lt;span class=&quot;token function&quot;&gt;chown&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-R&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1001.1001&lt;/span&gt; /data/docker/nodered
+&lt;span class=&quot;token function&quot;&gt;chown&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-R&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1001.1001&lt;/span&gt;  /data/docker/traefik
+&lt;span class=&quot;token function&quot;&gt;chown&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1001.1001&lt;/span&gt;  /data/docker/shared&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Create &lt;a href=&quot;https://traefik.io/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Traefik&lt;/a&gt;’s config file: &lt;code class=&quot;language-text&quot;&gt;/data/docker/traefik/traefik.toml&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;toml&quot;&gt;&lt;pre class=&quot;language-toml&quot;&gt;&lt;code class=&quot;language-toml&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;#debug = true&lt;/span&gt;
+
+&lt;span class=&quot;token key property&quot;&gt;logLevel&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;ERROR&quot;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;#DEBUG, INFO, WARN, ERROR, FATAL, PANIC&lt;/span&gt;
+&lt;span class=&quot;token key property&quot;&gt;InsecureSkipVerify&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt; 
+&lt;span class=&quot;token key property&quot;&gt;defaultEntryPoints&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;https&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;http&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# WEB interface of Traefik - it will show web page with overview of frontend and backend configurations &lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token table class-name&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;token key property&quot;&gt;entryPoint&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;traefik&quot;&lt;/span&gt;
+  &lt;span class=&quot;token key property&quot;&gt;dashboard&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;token key property&quot;&gt;address&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;:8080&quot;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# Force HTTPS&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token table class-name&quot;&gt;entryPoints&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token table class-name&quot;&gt;entryPoints.http&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;token key property&quot;&gt;address&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;:80&quot;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token table class-name&quot;&gt;entryPoints.http.redirect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;token key property&quot;&gt;entryPoint&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;https&quot;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token table class-name&quot;&gt;entryPoints.https&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;token key property&quot;&gt;address&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;:443&quot;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token table class-name&quot;&gt;entryPoints.https.tls&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token table class-name&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;token key property&quot;&gt;watch&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;token key property&quot;&gt;filename&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;/etc/traefik/rules.toml&quot;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# Let&apos;s encrypt configuration&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token table class-name&quot;&gt;acme&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token key property&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;email@domain.com&quot;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;#any email id will work&lt;/span&gt;
+&lt;span class=&quot;token key property&quot;&gt;storage&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;/etc/traefik/acme/acme.json&quot;&lt;/span&gt;
+&lt;span class=&quot;token key property&quot;&gt;entryPoint&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;https&quot;&lt;/span&gt;
+&lt;span class=&quot;token key property&quot;&gt;acmeLogging&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt; 
+&lt;span class=&quot;token key property&quot;&gt;onDemand&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;#create certificate when container is created&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token table class-name&quot;&gt;acme.dnsChallenge&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;token key property&quot;&gt;provider&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;cloudflare&quot;&lt;/span&gt;
+  &lt;span class=&quot;token key property&quot;&gt;delayBeforeCheck&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;300&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token table class-name&quot;&gt;acme.domains&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+   &lt;span class=&quot;token key property&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;domain.tld&quot;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token table class-name&quot;&gt;acme.domains&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+   &lt;span class=&quot;token key property&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;*.domain.tld&quot;&lt;/span&gt;
+   
+&lt;span class=&quot;token comment&quot;&gt;# Connection to docker host system (docker.sock)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token table class-name&quot;&gt;docker&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token key property&quot;&gt;endpoint&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;unix:///var/run/docker.sock&quot;&lt;/span&gt;
+&lt;span class=&quot;token key property&quot;&gt;domain&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;domain.tld&quot;&lt;/span&gt;
+&lt;span class=&quot;token key property&quot;&gt;watch&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# This will hide all docker containers that don&apos;t have explicitly  &lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# set label to &quot;enable&quot;&lt;/span&gt;
+&lt;span class=&quot;token key property&quot;&gt;exposedbydefault&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Replace/Configure:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;mailto:email@domain.com&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;email@domain.com&lt;/a&gt;: with your email.&lt;/li&gt;
+&lt;li&gt;domain.tld: with your private domain name.&lt;/li&gt;
+&lt;li&gt;InsecureSkipVerify = true: I had to add at the beginning to allow some apps (eg. UniFi controller) be accessible through Traefik.&lt;/li&gt;
+&lt;li&gt;provider = “cloudflare”: Change to your DNS provider for DNS challenge.&lt;/li&gt;
+&lt;li&gt;exposedbydefault = false: This will force you to use traefik.enable=true label in docker compose to put apps behind traefik.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;If you want to use another DNS provider instead of CloudFlare, review the list of &lt;a href=&quot;https://docs.traefik.io/configuration/acme/#provider&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;available providers&lt;/a&gt; on the Traefik documentation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Install Docker&lt;/h2&gt;
+&lt;p&gt;Ok lets install docker.&lt;/p&gt;
+&lt;p&gt;I have a CentOS host which the following work:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; yum &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-y&lt;/span&gt; yum-utils &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+  device-mapper-persistent-data &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+  lvm2
+
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; yum-config-manager &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+    --add-repo &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+    https://download.docker.com/linux/centos/docker-ce.repo
+
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; yum &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; docker-ce docker-ce-cli containerd.io
+
+systemctl start &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt;
+systemctl &lt;span class=&quot;token builtin class-name&quot;&gt;enable&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Reference: &lt;a href=&quot;https://docs.docker.com/install/linux/docker-ce/centos/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://docs.docker.com/install/linux/docker-ce/centos/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;On Ubuntu the commands will be:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt-get&lt;/span&gt; update
+
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt-get&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+    apt-transport-https &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+    ca-certificates &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+    gnupg-agent &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+    software-properties-common
+
+&lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-fsSL&lt;/span&gt; https://download.docker.com/linux/ubuntu/gpg &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; apt-key &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; -
+
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; add-apt-repository &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+   &lt;span class=&quot;token string&quot;&gt;&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   &lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;lsb_release &lt;span class=&quot;token parameter variable&quot;&gt;-cs&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt; \
+   stable&quot;&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt-get&lt;/span&gt; update
+
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt-get&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; docker-ce docker-ce-cli containerd.io&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Reference: &lt;a href=&quot;https://docs.docker.com/install/linux/docker-ce/ubuntu/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://docs.docker.com/install/linux/docker-ce/ubuntu/&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Install docker-compose&lt;/h2&gt;
+&lt;p&gt;First confirm &lt;code class=&quot;language-text&quot;&gt;pip&lt;/code&gt; is installed:&lt;/p&gt;
+&lt;p&gt;On CentOS:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;yum &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; python-pip&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;On Ubuntu:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; python-pip&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then install docker-compose:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;pip &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;docker-compose&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Start containers with docker-compose&lt;/h2&gt;
+&lt;p&gt;Starting the containers is as simple as:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; /data/docker &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;docker-compose&lt;/span&gt; up &lt;span class=&quot;token parameter variable&quot;&gt;-d&lt;/span&gt; --remove-orphans &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;docker-compose&lt;/span&gt; logs &lt;span class=&quot;token parameter variable&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--tail&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should see output like the following:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;root@thor docker&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;# cd /data/docker &amp;amp;&amp;amp; docker-compose up -d --remove-orphans &amp;amp;&amp;amp; docker-compose logs -f --tail 10&lt;/span&gt;
+Pulling traefik &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;traefik:latest&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;.
+latest: Pulling from library/traefik
+d572f7c8e983: Pull complete
+d62b0f6adf29: Pull complete
+Digest: sha256:02cfdb77b0cd82d973dffb3dafe498283f82399bd75b335797d7f0fe3ebeccb8
+Status: Downloaded newer image &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; traefik:latest
+Pulling watchtower &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;v2tec/watchtower:latest&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;.
+latest: Pulling from v2tec/watchtower
+a5415f98d52c: Pull complete
+c3f7208ad77c: Pull complete
+169c1e589d74: Pull complete
+Digest: sha256:4cb6299fe87dcbfe0f13dcc5a11bf44bd9628a4dae0035fecb8cc2b88ff0fc79
+Status: Downloaded newer image &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; v2tec/watchtower:latest
+Pulling nodered &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;nodered/node-red-docker:slim-v10&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;.
+slim-v10: Pulling from nodered/node-red-docker
+e7c96db7181b: Pull complete
+bbec46749066: Pull complete
+89e5cf82282d: Pull complete
+5de6895db72f: Pull complete
+6c5493c0ae88: Pull complete
+6ace8e934b90: Pull complete
+e37b30d9d482: Pull complete
+95734c8da825: Pull complete
+cf430c1fac0c: Pull complete
+Digest: sha256:42126aab7325a3133f47e0a89bb14a3985c8d4daeb8d8a3c0e19cfe9137e1c79
+Status: Downloaded newer image &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; nodered/node-red-docker:slim-v10
+Creating traefik    &lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;. &lt;span class=&quot;token keyword&quot;&gt;done&lt;/span&gt;
+Creating nodered    &lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;. &lt;span class=&quot;token keyword&quot;&gt;done&lt;/span&gt;
+Creating watchtower &lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;. &lt;span class=&quot;token keyword&quot;&gt;done&lt;/span&gt;
+Attaching to nodered, watchtower, traefik
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; node-red-docker@1.0.0 start /usr/src/node-red
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$NODE_OPTIONS&lt;/span&gt; node_modules/node-red/red.js &lt;span class=&quot;token parameter variable&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$FLOWS&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;--userDir&quot;&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;/data&quot;&lt;/span&gt;
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;
+watchtower    &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;2019-07-22T17:12:26+02:00&quot;&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;level&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;info &lt;span class=&quot;token assign-left variable&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;First run: 2019-07-23 05:30:00 +0200 SAST&quot;&lt;/span&gt;
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;22&lt;/span&gt; Jul &lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt;:12:28 - &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;info&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; Welcome to Node-RED
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;22&lt;/span&gt; Jul &lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt;:12:28 - &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;info&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; Node-RED version: v0.20.7
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;22&lt;/span&gt; Jul &lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt;:12:28 - &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;info&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; Node.js  version: v10.16.0
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;22&lt;/span&gt; Jul &lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt;:12:28 - &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;info&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; Linux &lt;span class=&quot;token number&quot;&gt;3.10&lt;/span&gt;.0-957.21.3.el7.x86_64 x64 LE
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;22&lt;/span&gt; Jul &lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt;:12:28 - &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;info&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; Loading palette nodes
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;22&lt;/span&gt; Jul &lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt;:12:30 - &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;warn&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; rpi-gpio &lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt; Raspberry Pi specific &lt;span class=&quot;token function&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;set&lt;/span&gt; inactive
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;22&lt;/span&gt; Jul &lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt;:12:30 - &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;warn&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; rpi-gpio &lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt; Cannot &lt;span class=&quot;token function&quot;&gt;find&lt;/span&gt; Pi RPi.GPIO python library
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;22&lt;/span&gt; Jul &lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt;:12:30 - &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;info&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; Settings &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;  &lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt; /data/settings.js
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;22&lt;/span&gt; Jul &lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt;:12:30 - &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;info&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; Context store  &lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;default&apos;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;module&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;memory&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;22&lt;/span&gt; Jul &lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt;:12:30 - &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;info&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; User directory &lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt; /data
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;22&lt;/span&gt; Jul &lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt;:12:30 - &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;warn&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; Projects disabled &lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;editorTheme.projects.enabled&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;false
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;22&lt;/span&gt; Jul &lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt;:12:30 - &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;info&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; Flows &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;     &lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt; /data/flows.json
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;22&lt;/span&gt; Jul &lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt;:12:30 - &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;info&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; Creating new flow &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;22&lt;/span&gt; Jul &lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt;:12:30 - &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;warn&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; ---------------------------------------------------------------------
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; Your flow credentials &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; is encrypted using a system-generated key.
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; If the system-generated key is lost &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; any reason, your credentials
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; will not be recoverable, you will have to delete it and re-enter
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; your credentials.
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; You should &lt;span class=&quot;token builtin class-name&quot;&gt;set&lt;/span&gt; your own key using the &lt;span class=&quot;token string&quot;&gt;&apos;credentialSecret&apos;&lt;/span&gt; option &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt;
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; your settings file. Node-RED will &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt; re-encrypt your credentials
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; using your chosen key the next &lt;span class=&quot;token function&quot;&gt;time&lt;/span&gt; you deploy a change.
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; ---------------------------------------------------------------------
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;22&lt;/span&gt; Jul &lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt;:12:30 - &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;info&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; Server now running at http://127.0.0.1:1880/
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;22&lt;/span&gt; Jul &lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt;:12:30 - &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;info&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; Starting flows
+nodered       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;22&lt;/span&gt; Jul &lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt;:12:30 - &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;info&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; Started flows&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Do review the logs for a short while, it is possible that traefik failed to generate a certificate if your domain already has a TXT record for SPF.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;traefik       &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;2019-07-22T15:26:58Z&quot;&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;level&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;error &lt;span class=&quot;token assign-left variable&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Unable to obtain ACME certificate for domains &lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;domain.tld&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt; : unable to generate a certificate for the domains [domain.tld]: acme: Error -&gt; One or more domains had a problem:&lt;span class=&quot;token entity&quot; title=&quot;\n&quot;&gt;\n&lt;/span&gt;[domain.tld] [domain.tld] acme: error presenting token: cloudflare: failed to create TXT record: error from makeRequest: HTTP status 400: content &lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;{&lt;span class=&quot;token entity&quot; title=&quot;\\&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;success&lt;span class=&quot;token entity&quot; title=&quot;\\&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;:false,&lt;span class=&quot;token entity&quot; title=&quot;\\&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;errors&lt;span class=&quot;token entity&quot; title=&quot;\\&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;:[{&lt;span class=&quot;token entity&quot; title=&quot;\\&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;code&lt;span class=&quot;token entity&quot; title=&quot;\\&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;:81057,&lt;span class=&quot;token entity&quot; title=&quot;\\&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;message&lt;span class=&quot;token entity&quot; title=&quot;\\&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;:&lt;span class=&quot;token entity&quot; title=&quot;\\&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;The record already exists.&lt;span class=&quot;token entity&quot; title=&quot;\\&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;}],&lt;span class=&quot;token entity&quot; title=&quot;\\&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;messages&lt;span class=&quot;token entity&quot; title=&quot;\\&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;:[],&lt;span class=&quot;token entity&quot; title=&quot;\\&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;result&lt;span class=&quot;token entity&quot; title=&quot;\\&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;:null}&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;token entity&quot; title=&quot;\n&quot;&gt;\n&lt;/span&gt;&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Success&lt;/h2&gt;
+&lt;p&gt;If all good, you should now be able to access 2 services.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://traefik.domain.tld&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://traefik.domain.tld&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://nodered.domain.tld&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://nodered.domain.tld&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Both will require a password set earlier. Nodered by default doesn’t have authentication, and traefik’s dashboard also doesn’t, but that doesn’t mean we need to keep it open to the world.&lt;/p&gt;
+&lt;p&gt;Initially these may show up with a self-generated certificate while &lt;a href=&quot;https://traefik.io/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Traefik&lt;/a&gt; work to generate and authenticate a wild-card certificate for your domain. Once this is complete, you will have a certificate issued with: Issued by: Let’s Encrypt Authority X3&lt;/p&gt;</content:encoded></item><item><title><![CDATA[VRRP between Linux and RouterOS / Mikrotik]]></title><description><![CDATA[VRRP  The Virtual Router Redundancy Protocol (VRRP) is a computer networking protocol that provides for automatic assignment of available…]]></description><link>https://blog.linuxgeek.za.net/projects/vrrp-between-linux-and-routeros/</link><guid isPermaLink="false">https://blog.linuxgeek.za.net/projects/vrrp-between-linux-and-routeros/</guid><pubDate>Sat, 25 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;VRRP&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 895px; max-width: clamp(200px, calc(2.6881720430107525* 80vh), 1000px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f49b047a76499cba25ddf92e4e71e102/02f43/vrrp.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 37.2%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAABDklEQVQoz32RwUoDMRCG+3g+g6DP49mbCHryERQUPXnoRYoHEcGCYrFr1VC32d1kk0w+SdriuhV/GDIMM///Z2YQY6QfEiNBlvncgGogiJAQI7m+Rn92wD8w1oEERs9vbO2fcv34muuyIpWVSBeDEALGmBzOOWIUhuMpJ8MHZguTm2ZfmuOrG14+5oh3OOdzb9u2WGvRWlNV1dJhKtZ1ncO1Ft1Ydo8u2T68QNUOm8Qq/fPF5FBCJkukZVlSFAVKKZK5/OWUbNqPhCBZZFx8snd+y/1UQRSc99nZeia9KbLDvxacDtI6T5N2CNxN3tk5OGP0VGShRNid+bXD7oX6DUEgRDDGYvQCb82GeP/S3y+1Hpd+1h9nAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/f49b047a76499cba25ddf92e4e71e102/70216/vrrp.webp 250w,
+/static/f49b047a76499cba25ddf92e4e71e102/61bdd/vrrp.webp 500w,
+/static/f49b047a76499cba25ddf92e4e71e102/b0169/vrrp.webp 895w&quot;
+              sizes=&quot;(max-width: 895px) 100vw, 895px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/f49b047a76499cba25ddf92e4e71e102/41b2e/vrrp.png 250w,
+/static/f49b047a76499cba25ddf92e4e71e102/36a81/vrrp.png 500w,
+/static/f49b047a76499cba25ddf92e4e71e102/02f43/vrrp.png 895w&quot;
+            sizes=&quot;(max-width: 895px) 100vw, 895px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/f49b047a76499cba25ddf92e4e71e102/02f43/vrrp.png&quot;
+            alt=&quot;VRRP&quot;
+            title=&quot;VRRP&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The Virtual Router Redundancy Protocol (VRRP) is a computer networking protocol that provides for automatic assignment of available Internet Protocol (IP) routers to participating hosts. This increases the availability and reliability of routing paths via automatic default gateway selections on an IP subnetwork.&lt;/p&gt;
+&lt;p&gt;Reference: &lt;a href=&quot;https://en.wikipedia.org/wiki/Virtual_Router_Redundancy_Protocol&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Why&lt;/h3&gt;
+&lt;p&gt;I couldn’t find a guide on how to do this. There are plenty guides setting up VRRP on RouterOS between two Mikrotik devices, plenty for Cisco, plenty for Linux using Keepalived, and so on and so forth…&lt;/p&gt;
+&lt;p&gt;And so this guide…&lt;/p&gt;
+&lt;h3&gt;OK but Why…&lt;/h3&gt;
+&lt;p&gt;Ok but why did I need this you may ask?&lt;/p&gt;
+&lt;p&gt;In my specific situation, I have a DNS server running &lt;a href=&quot;https://pi-hole.net&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Pi-hole&lt;/a&gt; which is a Linux network-level advertisement and Internet tracker blocking application which acts as a DNS sinkhole, intended for use on a private network.&lt;/p&gt;
+&lt;p&gt;What happen is, this runs on a big server, however here in sunny South Africa we at times have power outages, otherwise known as load-shedding or blackouts in other countries over the world. When this happen, the fileserver loses power, but small devices like the Mikrotik Router, Ubiquiti wifi and FTTH ONT stays online…except nothing can resolve DNS when everything is configured to query the &lt;a href=&quot;https://pi-hole.net&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Pi-hole&lt;/a&gt; server which is now down.&lt;/p&gt;
+&lt;p&gt;The solution was born, using VRRP to have a floating ip address, which all devices will be configured to use. When the &lt;a href=&quot;https://pi-hole.net&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Pi-hole&lt;/a&gt; server is online, the IP address will be on there, and block advertisements, and when it goes offline, the Mikrotik router will take over answering DNS queries. The failover happens very quickly, in less than a second.&lt;/p&gt;
+&lt;h3&gt;RouterOS&lt;/h3&gt;
+&lt;p&gt;On the Mikrotik side, its fairy easy, I will make use of a screenshot to show what is needed.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 962px; max-width: clamp(200px, calc(1.4534883720930232* 80vh), 1000px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/0c994015c30cee2a29d38526609f4aae/8d25f/routeros-vrrp.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 68.80000000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAACpElEQVQ4y4WSCWvjRhiG9f9/SJuj3qVkHTulLEvZXLsJvuNTlqzD0kiyZMk6feQpmtCwpbAdeHjFwDz6vm9G6T516H5/pvPtge5zh0Gnx6g3kDno9hgPXxgPRvQ7PbS5ir0ysHQDe2XK77c0sfW3fWU6N1moNivDRDc8oqTC9WKs9QbD8mV6forwU2wnIogK/CDDsAIsJ8K0N5h2iCNi/DBHWa43zEwf1YqYai6qFTLVBeOlI3M4MzH9hKg44Cc5UXGS6e8KgrR8Z5NWBOkBxXMcxv0h09GYyXDEeDDE0lcEjpBtTIYDvj/M+PynR/PKovnJoN0S/HHjcdMWtFsu7bbg+npNv2ehJPEOz/XxREBZlJKqrKiqPdswxjZtxi8aT99mDLsaw/6Cfm+FOveZTVwsI8E0Ygw9wlgJlHSXsvFChCvI0uydPMtJtjHqbMnattD1qcxdEiPEmjAM2EYh8AocZe73FYovfAIRsLbWuGtBsk0o0pw8LUiihPl0wdqyUeczXEeQxAlhGFF3lqU59ToeT9JbFAXK492jFBm6yTbcku9q2RtxlGCtTPqjCU/PPUadCerS5aU/YzI1eFk4rLwMM8ixoz1T3UW5/euWjbdBOEK2WVNkhWw79EPyJEdfapRVSVmWcrZ5UVBWFXlesN8fOJ5OslLP81Huvt5RpAXbzZYsyd5Jk5Q0TmXFurainnV9WXJk/1DH6yun45sw8AOU+9t7TtVJSsus/Be1rMorHu8faVw0uPr9E+1mm1az9R/a122aV02U+6/3HMqDPFxLf6SutBbWPz375YzGZYPL88ufojzcPshb3xd7Kf6RWnban2SF57+e87HxkQ+/ffgpyk3rRj4NTdVYzpcytYWGruqMh2NM3eTL5y9cnF38r6wW/g0OPfR+Uuh6vgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/0c994015c30cee2a29d38526609f4aae/70216/routeros-vrrp.webp 250w,
+/static/0c994015c30cee2a29d38526609f4aae/61bdd/routeros-vrrp.webp 500w,
+/static/0c994015c30cee2a29d38526609f4aae/2d7aa/routeros-vrrp.webp 962w&quot;
+              sizes=&quot;(max-width: 962px) 100vw, 962px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/0c994015c30cee2a29d38526609f4aae/41b2e/routeros-vrrp.png 250w,
+/static/0c994015c30cee2a29d38526609f4aae/36a81/routeros-vrrp.png 500w,
+/static/0c994015c30cee2a29d38526609f4aae/8d25f/routeros-vrrp.png 962w&quot;
+            sizes=&quot;(max-width: 962px) 100vw, 962px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/0c994015c30cee2a29d38526609f4aae/8d25f/routeros-vrrp.png&quot;
+            alt=&quot;WINBOX&quot;
+            title=&quot;WINBOX&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create a new interface in the VRRP tab&lt;/li&gt;
+&lt;li&gt;Select the LAN interface, bridge1 in my case&lt;/li&gt;
+&lt;li&gt;Choose a VRID, 2 here&lt;/li&gt;
+&lt;li&gt;Priority is 100 (as this will be my backup)&lt;/li&gt;
+&lt;li&gt;Interval is 1.00 for 1 second&lt;/li&gt;
+&lt;li&gt;Setup authentication. I wanted to use ‘ah’ but settled for ‘simple’ and you need version 2 for IPv4. Version 3 of VRRP is intended for IPv6.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Linux&lt;/h3&gt;
+&lt;p&gt;On the Linux OS side, I make use of &lt;a href=&quot;https://www.keepalived.org&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Keepalived&lt;/a&gt; which can do both virtual ip addresses using VRRP and also simple load-balancing. We will only use the former.&lt;/p&gt;
+&lt;p&gt;This is the /etc/keepalived/keepalived.conf to match up to the VRRP on the Mikrotik:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; Configuration File &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; keepalived
+
+global_defs &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+   router_id &lt;span class=&quot;token constant&quot;&gt;LVS_DEVEL&lt;/span&gt;
+   vrrp_skip_check_adv_addr
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+vrrp_instance &lt;span class=&quot;token constant&quot;&gt;VI_1&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    state &lt;span class=&quot;token constant&quot;&gt;BACKUP&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;eth0&lt;/span&gt;
+    virtual_router_id &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;
+    priority &lt;span class=&quot;token number&quot;&gt;200&lt;/span&gt;
+    advert_int &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
+    authentication &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        auth_type &lt;span class=&quot;token constant&quot;&gt;PASS&lt;/span&gt;
+        auth_pass pihole77
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    virtual_ipaddress &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token number&quot;&gt;192.168&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;.241&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;.2&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;24&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;Router id matches the Mikrotik&lt;/li&gt;
+&lt;li&gt;Prioty is doubled up to 200 to make this the master&lt;/li&gt;
+&lt;li&gt;advert_int is 1 for 1 second&lt;/li&gt;
+&lt;li&gt;Authentication match up to the Mikrotik&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Slow…&lt;/h3&gt;
+&lt;p&gt;There was one issue I ran in to. &lt;a href=&quot;https://pi-hole.net&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Pi-hole&lt;/a&gt; service takes a few minutes to start up, mostly combining my huge amount of blacklists from the internet. The problem with this is, if the ip address move over before this complete, I have downtime on the DNS.&lt;/p&gt;
+&lt;p&gt;The solution to this, &lt;a href=&quot;https://www.keepalived.org&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Keepalived&lt;/a&gt; isn’t set to auto start, but controlled through a very simplisting bash/cron script, that check if we can resolve dns locally on the &lt;a href=&quot;https://pi-hole.net&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Pi-hole&lt;/a&gt; server before starting up &lt;a href=&quot;https://www.keepalived.org&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Keepalived&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token shebang important&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;token assign-left variable&quot;&gt;DNSCHECK&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;dig&lt;/span&gt; localhost @192.168.241.186 +short&lt;span class=&quot;token variable&quot;&gt;`&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;#KEEPALIVE=`/etc/init.d/keepalived status | grep started`&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$DNSCHECK&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;127.0.0.1&apos;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
+  &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;DNS IS UP!&quot;&lt;/span&gt;
+  /etc/init.d/keepalived status &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;grep&lt;/span&gt; started &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; /dev/null
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$?&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-ne&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
+    &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Keepalive not running, lets start it&quot;&lt;/span&gt;
+    /etc/init.d/keepalived zap &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; /dev/null
+    /etc/init.d/keepalived start &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; /dev/null
+  &lt;span class=&quot;token keyword&quot;&gt;fi&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt;
+  &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;DNS IS DOWN!&quot;&lt;/span&gt;
+  /etc/init.d/keepalived status &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;grep&lt;/span&gt; started &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; /dev/null
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$?&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-eq&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
+    &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Keepalive is running, lets stop it&quot;&lt;/span&gt;
+    /etc/init.d/keepalived stop &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; /dev/null
+  &lt;span class=&quot;token keyword&quot;&gt;fi&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;END&lt;/h3&gt;
+&lt;p&gt;So there you have it. A little bit of work, but makes for a smooth transition between the Pi-hole server and the Mikrotik router. Let me know in the comments what you think.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Out with the old, in with the new]]></title><description><![CDATA[History Originally LinuxGeek.za.net started out as a Wordpress blog. Back then I was working as a syadmin, long before the cloud hosting…]]></description><link>https://blog.linuxgeek.za.net/stories/out-with-the-old-in-with-the-new//</link><guid isPermaLink="false">https://blog.linuxgeek.za.net/stories/out-with-the-old-in-with-the-new//</guid><pubDate>Sat, 11 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;History&lt;/h3&gt;
+&lt;p&gt;Originally &lt;a href=&quot;https://www.linuxgeek.za.net&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;LinuxGeek.za.net&lt;/a&gt; started out as a Wordpress blog. Back then I was working as a syadmin, long before the cloud hosting space boomed and well I didn’t know any better.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; max-width: clamp(200px, calc(2.525252525252525* 80vh), 1000px); max-height: 1000px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/291b15d740d49a55833d59473f6121b2/3b493/screenshot-blog.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 39.6%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAABp0lEQVQoz2WQzWsaURTF528qhC5Ls4w61YUhi4KLdhMC3WVVkk0WSUoXQnBT2kKhVJLgJouShZuiQjIffqEZhASiY9GFOuPMG2cUnVPuLdoUFz/OvW/ePe/ckWRZRjKZZBKJBCKRyBrRaHStf0o8HufZWCwGKQgCDIdDOI7DCNeF67pcL3U8HkMIwT2pZVkYjUYraJ50NptBAoB2u41SqYRqtQpFUViJQqGARqOBcrkMVVVZ6V6324Vt2/+Z0iOLxQLSfD6HaZpQVQWVSoWHyLRWq0HXda4Nw+B62bc7HTYZDAacbpmQvCSK6QoBP5jC8wNM/ABTOqPVhcdr+L4P4U34O91dJqKUBNUEG9LKXbODx1YTv+8NmA8t1KplWJYNMR5C13TcNZtwBn30Ow8Qjo0wDFcPEVTTunTOhl/SJ/h2vI/s6T6O3rzCzstn0G5vUMz/xPMXMrZ3Uvj4fg/y5gZuf13TCMJwAc/zmL99+M/wIvMBB6+3kDs7wtWnUxymojAqCoo3On58zuD6exr53Fe8232Ly/MsPG/C/1rTNKZer6PX67HxHxxlFgIPvHSPAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/291b15d740d49a55833d59473f6121b2/70216/screenshot-blog.webp 250w,
+/static/291b15d740d49a55833d59473f6121b2/61bdd/screenshot-blog.webp 500w,
+/static/291b15d740d49a55833d59473f6121b2/d0dac/screenshot-blog.webp 1000w,
+/static/291b15d740d49a55833d59473f6121b2/ec1c1/screenshot-blog.webp 1261w&quot;
+              sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/291b15d740d49a55833d59473f6121b2/41b2e/screenshot-blog.png 250w,
+/static/291b15d740d49a55833d59473f6121b2/36a81/screenshot-blog.png 500w,
+/static/291b15d740d49a55833d59473f6121b2/ea415/screenshot-blog.png 1000w,
+/static/291b15d740d49a55833d59473f6121b2/3b493/screenshot-blog.png 1261w&quot;
+            sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/291b15d740d49a55833d59473f6121b2/ea415/screenshot-blog.png&quot;
+            alt=&quot;screenshot blog&quot;
+            title=&quot;screenshot blog&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;New blog&lt;/h3&gt;
+&lt;p&gt;Fast forward to today, the old blog has long been down and I wanted something back up, that is much easier to manage but most importantly, as low as possible cost in both maintenance time and running cost. This means, no servers and falls in line with the current trend of serverless or static. I played a little around with a blog using AWS Lambda, but it still needed a lot of work and polish, so settled for a static content generator, based on &lt;a href=&quot;https://www.gatsbyjs.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;GatsbyJS&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;The future&lt;/h3&gt;
+&lt;p&gt;In a future post, I will write about and how to get it up and running as I have it here now. Also in due time, I will add back some of the old content, that is still valid today.&lt;/p&gt;
+&lt;p&gt;Until next time…&lt;/p&gt;</content:encoded></item></channel></rss>
